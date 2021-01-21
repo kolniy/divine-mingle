@@ -1,0 +1,32 @@
+{
+  "name": "divine-mingle",
+  "version": "1.0.0",
+  "description": "a dating site for religious people",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && node dist/server.js",
+    "build": "babel src -d dist",
+    "dev":   "env-cmd -f ./config/.dev.env nodemon --exec babel-node ./src/server.js",
+    "client": "npm start --prefix client",
+    "serve-app": "concurrently \"npm run dev\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "divine mingle",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "env-cmd": "^10.1.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.9.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.13",
+    "multer": "^1.4.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "concurrently": "^5.3.0"
+  }
+}
