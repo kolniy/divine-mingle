@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 
 const profileSchema = ({
-    owner: {
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
@@ -23,7 +23,7 @@ const profileSchema = ({
     interests: {
         type: [String]
     },
-    profilePic: {
+    profilepic: {
         type: String
     },
     dateofbrith: {

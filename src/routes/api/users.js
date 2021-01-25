@@ -11,7 +11,7 @@ const tokenSecret = process.env.JWTSECRET
 // route to get currently logged in user
 router.get('/', auth, async (req, res) => {
     const userId = req.user.id
-    const user = await User.findById(userId)
+    const user = await User.findById(userId).select('-password')
     if(!user){
         return res.status(404).json({ errors: [{ msg: "user not found" }] })
     }
