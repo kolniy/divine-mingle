@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "a dating site for religious people",
   "main": "index.js",
+  "engines": {
+    "node": "14.15.4"
+  },
   "scripts": {
     "start": "npm run build && node dist/server.js",
     "build": "babel src -d dist",
