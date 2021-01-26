@@ -1,38 +1,144 @@
-.App {
-  text-align: center;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --site-blue-color: #5e72e4;
+  --site-secondary-blue: #11cdef;
+  --site-green-color: #2dce89;
+  --site-theme-color: #f5365c;
+  --site-orange-color: #fb6340;
+  --site-secondary-orange-color: #ff3b30;
+  --site-grey-color: #f4f5f7;
+  --site-dark-color: #3d3d3d;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  box-sizing: border-box;
+  font-family: Lato, sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.custom-navbar-styles {
+  min-height: 80px;
 }
 
-.App-link {
-  color: #61dafb;
+.site-theme {
+  color: var(--site-orange-color)
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.text-dark {
+  color: var(--site-dark-color);
+}
+
+.custom-navbar-styles h2 {
+  text-transform: uppercase;
+  color: var(--site-orange-color);
+  font-weight: 450;
+  font-size: 20px;
+}
+
+.register-page-one {
+  max-width: 100% !important;
+  height: 100vh !important;
+  background-image: url(./images/divine-mingle-reg-page.jpg);
+  background-color: rgba(0, 0, 0, 0.9) !important;
+  background-size: cover !important;
+  background-position: bottom !important;
+  position: relative;
+  padding: 120px 5px;
+}
+
+.register-cta .cta-heading{
+  color: var(--site-grey-color);
+  text-transform: uppercase;
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.register-cta .cta-heading span {
+  color: var(--site-orange-color);
+  font-weight: 600;
+}
+
+.register-cta .card{
+  padding: 40px 10px;
+  position: relative;
+}
+
+.register-cta .card .form-info {
+  margin-bottom: 30px;
+}
+
+.register-cta .card .form-warning{
+  color: var(--site-secondary-orange-color);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.register-cta .card .centered {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.register-cta .card .login-details{
+  font-size: 17px;
+  margin-top: 70px;
+}
+
+.register-cta .card .login-details a:hover {
+  color: var(--site-orange-color);
+}
+
+.profile-page-one {
+  max-width: 100% !important;
+  height: 100vh !important;
+  position: relative;
+  padding: 120px 20px;
+}
+
+.profile-page-one .weighted {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.profile-page-one .card {
+  padding: 40px 10px;
+}
+
+.profile-page-one .card .text-uppercase{
+  text-transform: uppercase;
+}
+
+.profile-page-one .form-group {
+  margin-bottom: 1.2rem;
+}
+
+.profile-page-one .form-warning {
+  color: var(--site-secondary-orange-color);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.dot-container {
+  margin: 0 auto;
+  height: 15px;
+  width: 90px;
+}
+
+.dotted {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-color: #c4c4c4;
+  margin: 0 4px;
+  border-radius: 50%;
+}
+
+.active-dot {
+  background-color: var(--site-orange-color) !important;
 }

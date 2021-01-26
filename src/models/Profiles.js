@@ -27,8 +27,7 @@ const profileSchema = ({
         type: String
     },
     dateofbrith: {
-        type: Date,
-        default: Date.now
+        type: String
     },
     profilecompleted: {
         type: Boolean,
