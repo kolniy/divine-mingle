@@ -1,6 +1,6 @@
 import express from "express"
 
-import "../config/connection"
+import connectDB from "../config/connection"
 
 import usersRoute from "./routes/api/users"
 import profilesRoute from "./routes/api/profiles"
@@ -8,6 +8,7 @@ import profilesRoute from "./routes/api/profiles"
 const app = express()
 const PORT = process.env.PORT || 4000
 
+connectDB()
 
 app.use(express.json({ extended: false }))
 
