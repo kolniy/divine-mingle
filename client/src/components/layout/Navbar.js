@@ -16,7 +16,7 @@ const Navigationbar = () => (
           expand="lg"
         >
           <Container>
-            <NavbarBrand href="#pablo" onClick={e => e.preventDefault()}>
+            <NavbarBrand tag={Link} to="/">
              Divine Mingle
             </NavbarBrand>
             <button

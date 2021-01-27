@@ -22,17 +22,8 @@ router.get('/me', auth, async ( req, res) => {
 // private route
 // route to create or update user profile
 router.post('/', [
-    auth,
-    body('firstname', 'Firstname not provided').not().isEmpty(),
-    body('lastname', 'Lastname not provided').not().isEmpty(),
-    body('username', 'Username not provided').not().isEmpty()
+    auth
 ], async (req, res) => {
-    const errors = validationResult(req)
-    if(!errors.isEmpty()){
-        return res.status(400).json({
-            errors: errors.array()
-        })
-    }
 
     const { 
         firstname,
@@ -42,10 +33,10 @@ router.post('/', [
         denomination,
         interests,
         profilepic,
-        dateofbrith,
+        dateofbirth,
         profilecompleted
     } = req.body
-
+  
     const profileObject = {}
     profileObject.user = req.user.id
     if(firstname) profileObject.firstname = firstname
@@ -53,19 +44,11 @@ router.post('/', [
     if(username) profileObject.username = username
     if(ethnicity) profileObject.ethnicity = ethnicity
     if(denomination) profileObject.denomination = denomination
-    if(interests) profileObject.interests = interests
-    if(profilepic){
-        profileObject.profilepic = profilepic
-    } else {
-        let user = await User.findById(req.user.id)
-        const avatar = gravatar.url(user.email, {
-          s: '200',
-          r: 'pg',
-          d: 'mm'
-        })
-        profileObject.profilepic = avatar
+    if(interests) {
+        profileObject.interests = interests.split(",").map((interest) => interest.trim())
     }
-    if(dateofbrith) profileObject.dateofbrith = dateofbrith
+    if(profilepic)  profileObject.profilepic = profilepic
+    if(dateofbirth)  profileObject.dateofbirth = dateofbirth
     if(profilecompleted) profileObject.profilecompleted = profilecompleted
 
         try {

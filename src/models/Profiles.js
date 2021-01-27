@@ -26,7 +26,7 @@ const profileSchema = ({
     profilepic: {
         type: String
     },
-    dateofbrith: {
+    dateofbirth: {
         type: String
     },
     profilecompleted: {

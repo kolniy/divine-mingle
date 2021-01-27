@@ -94,31 +94,31 @@ body {
   color: var(--site-orange-color);
 }
 
-.profile-page-one {
+.profile-page {
   max-width: 100% !important;
   height: 100vh !important;
   position: relative;
   padding: 120px 20px;
 }
 
-.profile-page-one .weighted {
+.profile-page .weighted {
     font-weight: 700;
     font-size: 18px;
 }
 
-.profile-page-one .card {
+.profile-page .card {
   padding: 40px 10px;
 }
 
-.profile-page-one .card .text-uppercase{
+.profile-page .card .text-uppercase{
   text-transform: uppercase;
 }
 
-.profile-page-one .form-group {
+.profile-page .form-group {
   margin-bottom: 1.2rem;
 }
 
-.profile-page-one .form-warning {
+.profile-page .form-warning {
   color: var(--site-secondary-orange-color);
   font-size: 13px;
   margin-top: 2px;

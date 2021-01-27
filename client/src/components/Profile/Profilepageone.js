@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import { Container,
@@ -17,15 +17,15 @@ import { Container,
 import ReactDatetime from "react-datetime"
 import Moment from "moment"
 import profilepageoneimage from "../../images/regfirstStepPic.jpg"
-import { updateOrCreateUserProfile } from "../../actions/profile"
+import { updateOrCreateUserProfile, getProfile } from "../../actions/profile"
 
-const Profilepageone = ({ updateOrCreateProfile, history }) => {
+const Profilepageone = ({ updateOrCreateProfile, history, profile }) => {
 
-   const [ profileData, upDateProfileData ]= useState({
-     firstname:'',
-     lastname:'',
+   const [ profileData, upDateProfileData ] = useState({
+     firstname: '',
+     lastname: '',
      username:'',
-     dateofbirth:''
+     dateofbirth: Moment()
    })
 
    const [ validationInfo, updateValidationInfo ] = useState({
@@ -34,12 +34,34 @@ const Profilepageone = ({ updateOrCreateProfile, history }) => {
     validUsername: true
    })
 
+   useEffect(() => {
+      if(profile.userprofile !== null){
+        let profileFname = profile.userprofile.firstname
+        let profileLname = profile.userprofile.lastname
+        let profileUname = profile.userprofile.username
+        let profiledob = profile.userprofile.dateofbirth
+      upDateProfileData({
+        firstname: profileFname,
+        lastname: profileLname,
+        username: profileUname,
+        dateofbirth: profiledob
+      })  
+    }
+   }, [profile])
+
+   // block of code to ensure datetimepicker does not 
+   // future dates.
+   const futureDates = Moment().add(1, 'day')
+   const valid = function(current){
+     return current.isBefore(futureDates)
+   }
+
    const profileUpdateHandler = (e) => upDateProfileData({
      ...profileData,
      [e.target.name]: e.target.value
    })
 
-   const { firstname, lastname, username } = profileData
+   const { firstname, lastname, username, dateofbirth } = profileData
    const { validFistname, validLastName, validUsername } = validationInfo
 
    const checkInputsOnBlur = (e, validationName) => {
@@ -58,14 +80,14 @@ const Profilepageone = ({ updateOrCreateProfile, history }) => {
 
    const onFormSubmit = (e) => {
         e.preventDefault()
-        updateOrCreateProfile(profileData, history)
+        updateOrCreateProfile(profileData, history, 'profilepagetwo')
     }
 return <>
-    <section className="profile-page-one">
+    <section className="profile-page">
         <Container>
             <Row>
                 <Col md="5">
-                <Card className="shadow">
+          <Card className="shadow">
             <CardBody>
                 <h3 className="text-center weighted text-dark text-uppercase mb-4">Please fill in your personal info</h3>
                 <Form onSubmit={e => onFormSubmit(e)}>
@@ -109,6 +131,7 @@ return <>
               </InputGroupText>
             </InputGroupAddon>
             <ReactDatetime
+              value={dateofbirth}
               inputProps={{
                 placeholder: "Pick Your Date Of Birth",
                 required:true,
@@ -120,6 +143,7 @@ return <>
                 dateofbirth: Moment(e.toDate()).format("DD-MM-YYYY")
               })}
               closeOnSelect={true}
+              isValidDate={valid}
             />
           </InputGroup>
         </FormGroup>
@@ -167,8 +191,13 @@ return <>
 </>
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  updateOrCreateProfile : (profileFormData, history) => dispatch(updateOrCreateUserProfile(profileFormData, history))
+const mapStateToProps = (state) => ({
+  profile : state.profile
 })
 
-export default connect(null, mapDispatchToProps)(withRouter(Profilepageone))
+const mapDispatchToProps = (dispatch) => ({
+  updateOrCreateProfile : (profileFormData, history, routeTo) => dispatch(updateOrCreateUserProfile(profileFormData, history, routeTo)),
+  getUserProfile: () => dispatch(getProfile())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Profilepageone))

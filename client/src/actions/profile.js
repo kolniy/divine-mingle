@@ -5,7 +5,9 @@ import { setAlert } from "./alert"
 
 export const getProfile = () => {
     return async (dispatch) => {
-        setAuthToken(localStorage.getItem("token"))
+        if(localStorage.getItem("token")){
+            setAuthToken(localStorage.getItem("token"))
+        }
         try {
             const config = {
                 headers: {
@@ -32,7 +34,7 @@ export const getProfile = () => {
     }
 }
 
-export const updateOrCreateUserProfile = (profileData, history) => {
+export const updateOrCreateUserProfile = (profileData, history, routeTo) => {
     return async (dispatch) => {
         setAuthToken(localStorage.getItem("token"))
         const config = {
@@ -48,7 +50,7 @@ export const updateOrCreateUserProfile = (profileData, history) => {
                 payload: res.data
             })
             dispatch(setAlert('Profile Created Successfully', 'success'))
-            history.push('/profilepagetwo')
+            history.push(`/${routeTo}`)
         } catch (error) {
             const errors = error.response.data.errors
 
