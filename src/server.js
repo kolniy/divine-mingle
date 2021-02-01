@@ -1,4 +1,5 @@
 import express from "express"
+import cloudinary from "cloudinary"
 
 import connectDB from "./config/connection"
 
@@ -6,6 +7,13 @@ import usersRoute from "./routes/api/users"
 import profilesRoute from "./routes/api/profiles"
 
 import "regenerator-runtime/runtime"; // for the babel regenerator 
+
+
+cloudinary.v2.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+})
 
 const app = express()
 const PORT = process.env.PORT || 4000

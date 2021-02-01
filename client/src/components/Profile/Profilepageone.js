@@ -61,7 +61,7 @@ const Profilepageone = ({ updateOrCreateProfile, history, profile }) => {
      [e.target.name]: e.target.value
    })
 
-   const { firstname, lastname, username, dateofbirth } = profileData
+   const { firstname, lastname, username } = profileData
    const { validFistname, validLastName, validUsername } = validationInfo
 
    const checkInputsOnBlur = (e, validationName) => {
@@ -87,7 +87,7 @@ return <>
         <Container>
             <Row>
                 <Col md="5">
-          <Card className="shadow">
+          <Card className="shadow slide-in-left">
             <CardBody>
                 <h3 className="text-center weighted text-dark text-uppercase mb-4">Please fill in your personal info</h3>
                 <Form onSubmit={e => onFormSubmit(e)}>
@@ -131,7 +131,6 @@ return <>
               </InputGroupText>
             </InputGroupAddon>
             <ReactDatetime
-              value={dateofbirth}
               inputProps={{
                 placeholder: "Pick Your Date Of Birth",
                 required:true,
@@ -181,8 +180,8 @@ return <>
           </Card>
         </Col>
             <Col md="7">
-                <section className="profile-page-image-container">
-                  <img className="img-fluid" src={profilepageoneimage} alt="profile page one couple together" />
+                <section className="profile-page-image-container slide-in-right">
+                  <img className="" src={profilepageoneimage} alt="profile page one couple together" />
                 </section>
             </Col>
             </Row>

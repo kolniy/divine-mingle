@@ -43,13 +43,13 @@ body {
 
 .register-page-one {
   max-width: 100% !important;
-  height: 100vh !important;
+  max-height: 100vh !important;
   background-image: url(./images/divine-mingle-reg-page.jpg);
   background-color: rgba(0, 0, 0, 0.9) !important;
   background-size: cover !important;
   background-position: bottom !important;
   position: relative;
-  padding: 120px 5px;
+  padding: 90px 5px;
 }
 
 .register-cta .cta-heading{
@@ -96,9 +96,21 @@ body {
 
 .profile-page {
   max-width: 100% !important;
-  height: 100vh !important;
+  max-height: 95vh !important;
   position: relative;
-  padding: 120px 20px;
+  padding-top: 60px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: -15px;
+}
+
+.profile-page .card{
+  transition: transform .3s;
+  padding: 20px 10px;
+}
+
+.profile-page .card:hover{
+  transform: translateY(-10px);
 }
 
 .profile-page .weighted {
@@ -106,22 +118,55 @@ body {
     font-size: 18px;
 }
 
-.profile-page .card {
-  padding: 40px 10px;
-}
-
 .profile-page .card .text-uppercase{
   text-transform: uppercase;
 }
 
 .profile-page .form-group {
-  margin-bottom: 1.2rem;
+  margin-bottom: .9rem;
 }
 
 .profile-page .form-warning {
   color: var(--site-secondary-orange-color);
   font-size: 13px;
   margin-top: 2px;
+}
+
+.profile-page .photo-uploaded-container{
+  min-width: 170px;
+  min-height: 160px;
+  margin: 1.5px auto;
+}
+
+.profile-page .list-group {
+  border: .3px solid var(--site-orange-color);
+  border-radius: 3px;
+  transition: all .6s;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.profile-page .list-group-item{
+  font-size: 13px;
+  transition: all .5s;
+}
+
+.profile-page .list-group-item:hover{
+  background-color: var(--site-orange-color);
+  color: var(--site-grey-color);
+  cursor: pointer;
+}
+
+.profile-page .picked-interest .remove-interest-span{
+  margin-left: 10px;
+}
+
+.profile-page .picked-interest .remove-interest-span:hover{
+  cursor: pointer;
+}
+
+.profile-page .no-display {
+  display: none;
 }
 
 .dot-container {
@@ -141,4 +186,110 @@ body {
 
 .active-dot {
   background-color: var(--site-orange-color) !important;
+}
+
+.slide-in-left {
+  animation-name: slide-in-left;
+  -webkit-animation-name: slide-in-left;
+  animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+}
+
+.slide-in-right {
+  animation-name: slide-in-right;
+  -webkit-animation-name: slide-in-right;
+  animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+}
+
+.slide-in-down {
+  animation-name: slide-in-down;
+  -webkit-animation-name: slide-in-down;
+  animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+}
+
+.animate-alert {
+  transition: all .9s;
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-80%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slide-in-left {
+  0% {
+    transform: translateX(-80%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(80%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slide-in-right {
+  0% {
+    transform: translateX(80%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-down {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slide-in-down {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+
+/* media queries section  */
+
+@media (max-width: 576px){
+.profile-page-image-container {
+  display: none;
+  }
+}
+
+@media (max-width : 992px){
+  .profile-page-image-container img {
+    max-width: 100%;
+  }
 }

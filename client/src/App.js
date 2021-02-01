@@ -10,6 +10,7 @@ import Navigationbar from "./components/layout/Navbar"
 import Profilepageone from "./components/Profile/Profilepageone"
 import Profilepagetwo from "./components/Profile/Profilepagetwo"
 import Profilepagethree from "./components/Profile/Profilepagethree"
+import Dashboard from "./components/dashboard/Index"
 import PrivateRoute from "./components/routing/PrivateRoute"
 import Alert from "./components/layout/Alert"
 
@@ -40,7 +41,8 @@ function App() {
         <Route path="/" exact component={RegisterPageOne} />
         <PrivateRoute path="/profilepageone" exact component={Profilepageone} />
         <PrivateRoute path="/profilepagetwo" exact component={Profilepagetwo} />
-        <PrivateRoute path="/Profilepagethree" exact component={Profilepagethree} />
+        <PrivateRoute path="/profilepagethree" exact component={Profilepagethree} />
+        <PrivateRoute path="/dashboard" exact component={Dashboard} />
       </Switch>
     </Router>
     </Provider>

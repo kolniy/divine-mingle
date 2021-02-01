@@ -21,7 +21,10 @@ const profileSchema = ({
         type: String,
     },
     interests: {
-        type: [String]
+        type: [{
+            id: Number,
+            interestName: String
+        }]
     },
     profilepic: {
         type: String

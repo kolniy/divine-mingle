@@ -13,13 +13,17 @@ import { Container,
   } from "reactstrap"
 import profilepagetwoimage from "../../images/regsecondStep.jpg"
 import { updateOrCreateUserProfile } from "../../actions/profile"
+import dropDownData from "../../temp/dropDownData"
+import filterInterestOnType from "../../utilities/filterInterestOnUserType"
+import InterestList from "./interests/InterestList"
+import PickedInterest from "./interests/PickedInterest"
 
 const Profilepagetwo = ({ updateOrCreateProfile, history, profile }) => {
 
         const [ profileData, upDateProfileData ] = useState({
             ethnicity:'',
             denomination:'',
-            interests:''
+            interests:[]
         })
 
         const [ validationInfo, updateValidationInfo ] = useState({
@@ -27,6 +31,8 @@ const Profilepagetwo = ({ updateOrCreateProfile, history, profile }) => {
             validDenomination:true,
             validInterest:true
         })
+
+        const [interestInput, updateInterestInput] = useState('')
 
         const profileUpdateHandle = (e) => upDateProfileData({
             ...profileData,
@@ -40,11 +46,11 @@ const Profilepagetwo = ({ updateOrCreateProfile, history, profile }) => {
             if(profile.userprofile !== null){
                 let profileEthnic = profile.userprofile.ethnicity
                 let profileDeno = profile.userprofile.denomination
-                let profileInt = profile.userprofile.interests
+                let profileInterests = profile.userprofile.interests
                 upDateProfileData({
                     ethnicity: profileEthnic,
                     denomination: profileDeno,
-                    interests: profileInt.join()
+                    interests: profileInterests
                 })
             }
         }, [profile])
@@ -63,9 +69,31 @@ const Profilepagetwo = ({ updateOrCreateProfile, history, profile }) => {
                }
         }
 
+        const addNewInterestItem = (item) => {
+            upDateProfileData({
+                ...profileData,
+                interests: [
+                    ...profileData.interests,
+                    item
+                ]
+            })
+            updateInterestInput('')  // empty the interest seachbox query to remove the dropdown
+        }
+
+        const removeInterestItem = (item) => {
+            upDateProfileData({
+                ...profileData,
+                interests: interests.filter((interest) => interest.id !== item.id)
+            })
+        }
+
+        const filterInterestOnInput = (e) => {  // used for the interest input to filter interest based on user input
+            updateInterestInput(e.target.value)
+        }
+
         const onFormSubmit = (e) => {
             e.preventDefault()
-            updateOrCreateProfile(profileData, history, 'Profilepagethree')
+            updateOrCreateProfile(profileData, history, 'profilepagethree')
         }
 
     return <>
@@ -73,7 +101,7 @@ const Profilepagetwo = ({ updateOrCreateProfile, history, profile }) => {
         <Container>
             <Row>
                 <Col md="5">
-          <Card className="shadow">
+          <Card className="shadow slide-in-left">
             <CardBody>
                 <h3 className="text-center weighted text-dark text-uppercase mb-4">More Information about yourself</h3>
                 <Form onSubmit={onFormSubmit}>
@@ -112,16 +140,26 @@ const Profilepagetwo = ({ updateOrCreateProfile, history, profile }) => {
             <FormGroup>
                 <Input
                     className="form-control-alternative"
-                     placeholder="Enter your comma seperated interests..."
+                     placeholder="Start typing to see and choose your interest from the list"
                      type="text"
-                     value={interests}
+                     value={interestInput}
                      name="interests"
-                     required
-                     onChange={e => profileUpdateHandle(e)}
+                     onChange={e => filterInterestOnInput(e)}
                      onBlur={e => checkInputsOnBlur(e, "validInterest")}
                 />
                 {
-                    !validInterest && <p className="form-warning">interest's cannot be empty</p>
+                    interests.length === 0 ?
+                     <p className="form-warning">you must select at least one interest</p> : 
+                     <PickedInterest interestData={interests} removeInterestItem={removeInterestItem} />
+                }
+                {
+                    interestInput.length > 0 && <>
+                <div className="interest-list-container">
+                    {
+                        <InterestList addNewInterestItem={addNewInterestItem} searchResults={filterInterestOnType(dropDownData, interestInput)} />
+                    }
+                </div>
+                    </>
                 }
             </FormGroup>
                   
@@ -142,8 +180,8 @@ const Profilepagetwo = ({ updateOrCreateProfile, history, profile }) => {
           </Card>
         </Col>
             <Col md="7">
-                <section className="profile-page-image-container">
-                  <img className="img-fluid" src={profilepagetwoimage} alt="profile page one couple together" />
+                <section className="profile-page-image-container slide-in-right">
+                  <img src={profilepagetwoimage} alt="profile page one couple together" />
                 </section>
             </Col>
             </Row>

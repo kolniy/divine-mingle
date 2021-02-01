@@ -4,7 +4,7 @@ import { Alert, Container } from "reactstrap"
 
 const AlertComponent = ({ alert }) => (
     alert !== null && alert.length !== 0 && alert.map((singleAlert) => (
-        <Alert key={singleAlert.id} color={singleAlert.alertType}>
+        <Alert className="animate-alert" key={singleAlert.id} color={singleAlert.alertType}>
             <Container>
             <strong>{singleAlert.alertType}!</strong> {singleAlert.msg}
             </Container>

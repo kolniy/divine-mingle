@@ -49,7 +49,41 @@ export const updateOrCreateUserProfile = (profileData, history, routeTo) => {
                 type: UPDATE_PROFILE,
                 payload: res.data
             })
-            dispatch(setAlert('Profile Created Successfully', 'success'))
+            dispatch(setAlert('Profile Updated Successfully', 'success'))
+            history.push(`/${routeTo}`)
+        } catch (error) {
+            const errors = error.response.data.errors
+
+            if(errors){
+                errors.forEach(error => {
+                    dispatch(setAlert(error.msg, "danger"))
+                });
+            }
+            dispatch({
+                type: PROFILE_ERROR
+            })
+        }
+    }
+}
+
+export const uploadProfileImage = (imageFormData, history, routeTo) => {
+    return async (dispatch) => {
+        if(localStorage.getItem("token")){
+            setAuthToken(localStorage.getItem("token"))
+        }
+        const config = {
+            headers:{
+                'Content-Type': 'multipart/form-data'
+            }
+        }
+        const body = imageFormData
+        try {
+        const res = await axios.put('/api/v1/profile/image/upload', body, config)
+         dispatch({
+            type: UPDATE_PROFILE,
+            payload: res.data
+            })
+            dispatch(setAlert('Image Uploaded successfully', 'success'))
             history.push(`/${routeTo}`)
         } catch (error) {
             const errors = error.response.data.errors
