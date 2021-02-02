@@ -40,7 +40,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={RegisterPageOne} />
         <PrivateRoute path="/profilepageone" exact component={Profilepageone} />
-        <PrivateRoute path="/profilepagetwo" exact component={Profilepagetwo} />
+        <Route path="/profilepagetwo" exact component={Profilepagetwo} />
         <PrivateRoute path="/profilepagethree" exact component={Profilepagethree} />
         <PrivateRoute path="/dashboard" exact component={Dashboard} />
       </Switch>

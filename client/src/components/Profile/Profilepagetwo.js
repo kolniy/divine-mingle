@@ -29,18 +29,19 @@ const Profilepagetwo = ({ updateOrCreateProfile, history, profile }) => {
         const [ validationInfo, updateValidationInfo ] = useState({
             validEthnicity:true,
             validDenomination:true,
-            validInterest:true
         })
 
         const [interestInput, updateInterestInput] = useState('')
 
-        const profileUpdateHandle = (e) => upDateProfileData({
-            ...profileData,
-            [e.target.name]: e.target.value
-        })
+        const profileUpdateHandle = (e) => {
+            upDateProfileData({
+                ...profileData,
+                [e.target.name]: e.target.value
+            })
+        }
 
         const { ethnicity, denomination, interests } = profileData
-        const { validEthnicity, validDenomination, validInterest } = validationInfo
+        const { validEthnicity, validDenomination } = validationInfo
 
         useEffect(() => {
             if(profile.userprofile !== null){
@@ -108,14 +109,21 @@ const Profilepagetwo = ({ updateOrCreateProfile, history, profile }) => {
                 <FormGroup>
                     <Input
                     className="form-control-alternative"
-                     placeholder="ethnicity"
-                     type="text"
+                     type="select"
                      value={ethnicity}
                      name="ethnicity"
                      required
                      onChange={e => profileUpdateHandle(e)}
                      onBlur={e => checkInputsOnBlur(e, "validEthnicity")}
-                />
+                >
+                    <option value="" placeholder="true">Choose Your Ethnicity</option>
+                    <option value="white or caucasian">White or Caucasian</option>
+                    <option value="black or african american">Black or African American</option>
+                    <option value="american indian or alaska native">American Indian or Alaska Native</option>
+                    <option value="latino or hispanic">Latino or Hispanic</option>
+                    <option value="asian">Asian</option>
+                    <option value="pacific islander or hawaiian">Pacific Islander or Hawaiian</option>
+                </Input>
                 {
                     !validEthnicity && <p className="form-warning">ethnicity cannot be empty</p>
                 }
@@ -145,7 +153,6 @@ const Profilepagetwo = ({ updateOrCreateProfile, history, profile }) => {
                      value={interestInput}
                      name="interests"
                      onChange={e => filterInterestOnInput(e)}
-                     onBlur={e => checkInputsOnBlur(e, "validInterest")}
                 />
                 {
                     interests.length === 0 ?
@@ -166,8 +173,14 @@ const Profilepagetwo = ({ updateOrCreateProfile, history, profile }) => {
                 <br/>
 
           <FormGroup className="centered">
-              <Button disabled={ !validEthnicity || !validInterest || !validDenomination } block className="btn-icon" type="submit" color="warning" size="lg">NEXT</Button>
-          </FormGroup>
+              <Button disabled={ !validEthnicity || interests.length === 0 || !validDenomination } // button is disabled if ethnicity or
+            //    denomination values are empty or interest is less then one
+               block 
+               className="btn-icon" 
+               type="submit"
+                color="warning"
+                 size="lg">NEXT</Button>
+          </FormGroup>  
         </Form>
 
        <div className="dot-container">
