@@ -47,7 +47,7 @@ const Profilepagethree = ({ saveImage, history }) => {
             <Row>
                 <Col md="4"></Col>
                 <Col md="4">
-                <Card className="shadow">
+                <Card className="">
         <CardBody>
         <h3 className="text-center weighted text-dark text-uppercase mb-4">Upload your display picture</h3>
             <div className="photo-uploaded-container">

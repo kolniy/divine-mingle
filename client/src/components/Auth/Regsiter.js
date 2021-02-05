@@ -81,7 +81,7 @@ const RegisterPageOne = ({ register, history }) => {
                 <input type="hidden" value="something"/>
                 <FormGroup>
                     <Input
-                    className="form-control-alternative"
+                    className="form-control-alternative input-style"
                      placeholder="yourname@mail.com"
                      type="email"
                      value={email}
@@ -95,7 +95,7 @@ const RegisterPageOne = ({ register, history }) => {
              </FormGroup>
             <FormGroup>
                 <Input
-                    className="form-control-alternative"
+                    className="form-control-alternative input-style"
                      placeholder="password"
                      type="password"
                      value={password}

@@ -102,13 +102,13 @@ const Profilepagetwo = ({ updateOrCreateProfile, history, profile }) => {
         <Container>
             <Row>
                 <Col md="5">
-          <Card className="shadow slide-in-left">
+          <Card className="slide-in-left">
             <CardBody>
                 <h3 className="text-center weighted text-dark text-uppercase mb-4">More Information about yourself</h3>
                 <Form onSubmit={onFormSubmit}>
                 <FormGroup>
                     <Input
-                    className="form-control-alternative"
+                    className="form-control-alternative input-Style"
                      type="select"
                      value={ethnicity}
                      name="ethnicity"
@@ -131,7 +131,7 @@ const Profilepagetwo = ({ updateOrCreateProfile, history, profile }) => {
 
             <FormGroup>
                 <Input
-                    className="form-control-alternative"
+                    className="form-control-alternative input-Style"
                      placeholder="denomination"
                      type="text"
                      value={denomination}
@@ -147,7 +147,7 @@ const Profilepagetwo = ({ updateOrCreateProfile, history, profile }) => {
 
             <FormGroup>
                 <Input
-                    className="form-control-alternative"
+                    className="form-control-alternative input-Style"
                      placeholder="Start typing to see and choose your interest from the list"
                      type="text"
                      value={interestInput}

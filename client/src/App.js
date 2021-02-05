@@ -4,8 +4,10 @@ import { Route, Switch, BrowserRouter as Router } from "react-router-dom"
 import "./styles/assets/vendor/nucleo/css/nucleo.css"
 import "./styles/assets/vendor/font-awesome/css/font-awesome.min.css"
 import "./styles/assets/css/argon-design-system-react.css"
-import './App.css';
-import RegisterPageOne from "./components/Auth/RegsiterPageOne"
+import './App.scss';
+
+import Register from "./components/Auth/Regsiter"
+import Login from "./components/Auth/Login"
 import Navigationbar from "./components/layout/Navbar"
 import Profilepageone from "./components/Profile/Profilepageone"
 import Profilepagetwo from "./components/Profile/Profilepagetwo"
@@ -38,9 +40,10 @@ function App() {
       <Navigationbar />
       <Alert />
       <Switch>
-        <Route path="/" exact component={RegisterPageOne} />
+        <Route path="/" exact component={Register} />
+        <Route path="/login" exact component={Login} />
         <PrivateRoute path="/profilepageone" exact component={Profilepageone} />
-        <Route path="/profilepagetwo" exact component={Profilepagetwo} />
+        <PrivateRoute path="/profilepagetwo" exact component={Profilepagetwo} />
         <PrivateRoute path="/profilepagethree" exact component={Profilepagethree} />
         <PrivateRoute path="/dashboard" exact component={Dashboard} />
       </Switch>

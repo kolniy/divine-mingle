@@ -1,23 +1,26 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { connect } from "react-redux"
 import {
     UncontrolledCollapse,
     NavbarBrand,
     Navbar,
-    Nav,
     Container,
     Row,
-    Col
+    Col,
   } from "reactstrap";
+  import Logo from "../../images/divineminglelogo.png"
+  import Navlinks from "./Navlinks"
 
-const Navigationbar = () => (
+const Navigationbar = ({ auth }) => {
+  return <>
     <Navbar
           className="navbar-horizontal navbar-dark bg-warning custom-navbar-styles"
           expand="lg"
         >
           <Container>
             <NavbarBrand tag={Link} to="/">
-             Divine Mingle
+             <img className="logo-style" src={Logo} alt="divine mingle logo" />
             </NavbarBrand>
             <button
               aria-controls="navbar-warning"
@@ -56,11 +59,17 @@ const Navigationbar = () => (
                   </Col>
                 </Row>
               </div>
-              <Nav className="align-items-lg-center ml-lg-auto" navbar>
-              </Nav>
+              {
+                auth.authenticated && <Navlinks />
+              }
             </UncontrolledCollapse>
           </Container>
         </Navbar>
-)
+  </>
+}
 
-export default Navigationbar
+const mapStateToProps = (state) => ({
+    auth: state.auth
+})
+
+export default connect(mapStateToProps)(Navigationbar)

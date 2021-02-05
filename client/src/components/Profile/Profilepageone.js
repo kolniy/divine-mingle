@@ -87,13 +87,13 @@ return <>
         <Container>
             <Row>
                 <Col md="5">
-          <Card className="shadow slide-in-left">
+          <Card className="slide-in-left">
             <CardBody>
                 <h3 className="text-center weighted text-dark text-uppercase mb-4">Please fill in your personal info</h3>
                 <Form onSubmit={e => onFormSubmit(e)}>
                 <FormGroup>
                     <Input
-                    className="form-control-alternative"
+                    className="form-control-alternative input-Style"
                      placeholder="firstname"
                      type="text"
                      value={firstname}
@@ -109,7 +109,7 @@ return <>
 
             <FormGroup>
                 <Input
-                    className="form-control-alternative"
+                    className="form-control-alternative input-Style"
                      placeholder="lastname"
                      type="text"
                      value={lastname}
@@ -124,7 +124,7 @@ return <>
             </FormGroup>
 
         <FormGroup>
-          <InputGroup className="input-group-alternative">
+          <InputGroup className="input-group-alternative input-Style">
             <InputGroupAddon addonType="prepend">
               <InputGroupText>
                 <i className="ni ni-calendar-grid-58" />
@@ -149,7 +149,7 @@ return <>
 
             <FormGroup>
                 <Input
-                    className="form-control-alternative"
+                    className="form-control-alternative input-Style"
                      placeholder="username"
                      type="text"
                      value={username}
@@ -181,7 +181,7 @@ return <>
         </Col>
             <Col md="7">
                 <section className="profile-page-image-container slide-in-right">
-                  <img className="" src={profilepageoneimage} alt="profile page one couple together" />
+                  <img src={profilepageoneimage} alt="profile page one couple together" />
                 </section>
             </Col>
             </Row>

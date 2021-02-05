@@ -1,0 +1,20 @@
+/* media queries section  */
+
+@media (max-width: 576px){
+    .profile-page .profile-page-image-container {
+      display: none;
+      }
+      .custom-navbar-styles {
+        padding-top: -20px;
+        .logo-style {
+          width: 180px;
+          height: 80px;
+        }
+      }
+    }
+    
+@media (max-width : 992px){
+  .profile-page .profile-page-image-container img {
+    max-width: 100%;
+ }
+}

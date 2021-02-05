@@ -1,0 +1,85 @@
+.profile-page {
+    max-width: 100% !important;
+    max-height: 95vh !important;
+    position: relative;
+    padding-top: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: -15px;
+  }
+  
+  .profile-page .card{
+    padding: 20px 10px;
+    border: none;
+    position: relative;
+  }
+  
+  
+  .profile-page .weighted {
+      font-weight: 700;
+      font-size: 18px;
+  }
+  
+  .profile-page .card .text-uppercase{
+    text-transform: uppercase;
+  }
+  
+  .profile-page .form-group {
+    margin-bottom: 1.4rem;
+  }
+  
+  .profile-page .form-warning {
+    color: var(--site-secondary-orange-color);
+    font-size: 13px;
+    margin-top: 2px;
+  }
+  
+  .profile-page .input-Style {
+    border: 1px solid var(--site-dark-color);
+    border-radius: 0;
+  }
+  
+  .profile-page .photo-uploaded-container{
+    min-width: 170px;
+    min-height: 160px;
+    margin: 1.5px auto;
+  }
+  
+  .profile-page .list-group {
+    border: .3px solid var(--site-orange-color);
+    border-radius: 3px;
+    transition: all .6s;
+    max-height: 170px;
+    overflow-y: scroll;
+    position: absolute;
+    width: 80%;
+    z-index: 1;
+  }
+  
+  .profile-page .list-group-item{
+    font-size: 13px;
+    transition: all .5s;
+  }
+  
+  .profile-page .profile-page-image-container{
+    position: fixed;
+    bottom: 0;
+  }
+  
+  .profile-page .list-group-item:hover{
+    background-color: var(--site-orange-color);
+    color: var(--site-grey-color);
+    cursor: pointer;
+  }
+  
+  .profile-page .picked-interest .remove-interest-span{
+    margin-left: 10px;
+  }
+  
+  .profile-page .picked-interest .remove-interest-span:hover{
+    cursor: pointer;
+  }
+  
+  .profile-page .no-display {
+    display: none;
+  }

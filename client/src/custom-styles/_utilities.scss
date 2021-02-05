@@ -1,0 +1,26 @@
+.site-theme {
+    color: var(--site-orange-color)
+  }
+
+  .text-dark {
+    color: var(--site-dark-color);
+  }
+
+  .dot-container {
+    margin: 0 auto;
+    height: 15px;
+    width: 90px;
+  }
+  
+  .dotted {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: #c4c4c4;
+    margin: 0 4px;
+    border-radius: 50%;
+  }
+  
+  .active-dot {
+    background-color: var(--site-orange-color) !important;
+  }
