@@ -3,17 +3,10 @@ import { FormGroup, Button } from "reactstrap"
 
 const ResetProfileUpload = ({ resetUpload, handleSaveImage }) => {
 
-    // const handleButtonUpload = () => {
-    //     let formData = new FormData()
-    //     formData.append('avatar', imageToUpload, imageToUpload.name)
-    //     uploadImage(formData, history, '/dashboard')
-    // }
-
     return <>
     <FormGroup>
         <Button onClick={e => resetUpload(e)} block 
-        className="btn-icon" type="submit"
-         color="warning"
+        className="btn-icon btn-change-photo" type="submit"
           size="lg">CHANGE PHOTO</Button>
     </FormGroup>
     <FormGroup>

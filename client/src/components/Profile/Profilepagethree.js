@@ -38,7 +38,7 @@ const Profilepagethree = ({ saveImage, history }) => {
     const handleSaveProfileOnClick = () => {
         let formData = new FormData()
         formData.append('avatar', imageBlob)
-        saveImage(formData, history, 'dashboard')
+        saveImage(formData, history, 'dashboard/profile')
     }
 
     return <>
@@ -52,7 +52,7 @@ const Profilepagethree = ({ saveImage, history }) => {
         <h3 className="text-center weighted text-dark text-uppercase mb-4">Upload your display picture</h3>
             <div className="photo-uploaded-container">
                 <img src={ selectedFile !== null ? selectedFile : dummyAvatar }
-                 className="img-fluid rounded-circle shadow slide-in-down" 
+                 className="img-fluid rounded-circle slide-in-down" 
                  alt="profile upload container"
                  />
             </div>

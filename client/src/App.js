@@ -12,14 +12,14 @@ import Navigationbar from "./components/layout/Navbar"
 import Profilepageone from "./components/Profile/Profilepageone"
 import Profilepagetwo from "./components/Profile/Profilepagetwo"
 import Profilepagethree from "./components/Profile/Profilepagethree"
-import Dashboard from "./components/dashboard/Index"
+import DashboardProfile from "./components/dashboard/UserProfile/Profiledisplay"
 import PrivateRoute from "./components/routing/PrivateRoute"
 import Alert from "./components/layout/Alert"
 
 // REDUX STORE CONFIG
 import { Provider } from "react-redux"
 import store from "./store"
-// import { loadUser } from "./actions/auth"
+import { loadUser } from "./actions/auth"
 import setAuthToken from "./utilities/setAuthToken"
 
 if(localStorage.getItem("token")){
@@ -29,10 +29,10 @@ if(localStorage.getItem("token")){
 function App() {
 
   useEffect(() => {
-    // @todo load user by running store.dispatch
+    store.dispatch(loadUser())
     // @todo load user profile to check if user profile is complete and route accordingly
     // console.log(store)
-  })
+  }, [])
 
   return (
     <Provider store={store}>
@@ -45,7 +45,7 @@ function App() {
         <PrivateRoute path="/profilepageone" exact component={Profilepageone} />
         <PrivateRoute path="/profilepagetwo" exact component={Profilepagetwo} />
         <PrivateRoute path="/profilepagethree" exact component={Profilepagethree} />
-        <PrivateRoute path="/dashboard" exact component={Dashboard} />
+        <PrivateRoute path="/dashboard/profile" exact component={DashboardProfile} />
       </Switch>
     </Router>
     </Provider>

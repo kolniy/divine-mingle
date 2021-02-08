@@ -89,7 +89,7 @@ return <>
                 <Col md="5">
           <Card className="slide-in-left">
             <CardBody>
-                <h3 className="text-center weighted text-dark text-uppercase mb-4">Please fill in your personal info</h3>
+                <h3 className="text-center weighted text-dark text-uppercase">Please fill in your personal info</h3>
                 <Form onSubmit={e => onFormSubmit(e)}>
                 <FormGroup>
                     <Input
@@ -162,8 +162,6 @@ return <>
                   !validUsername && <p className="form-warning">username cannot be empty</p>
                 }
             </FormGroup>
-                  
-                <br/>
 
           <FormGroup className="centered">
               <Button disabled={ !validFistname || !validLastName || !validUsername } block className="btn-icon" type="submit" color="warning" size="lg">NEXT</Button>

@@ -77,9 +77,8 @@ const RegisterPageOne = ({ register, history }) => {
                 <h3 className="text-center site-theme">Divine Mingle</h3>
                 <h4 className="text-center text-dark">Sign up</h4>
                 </div>
-                <Form onSubmit={e => onFormSubmit(e)}>
-                <input type="hidden" value="something"/>
-                <FormGroup>
+            <Form onSubmit={e => onFormSubmit(e)}>
+                <FormGroup className="form-group-margin">
                     <Input
                     className="form-control-alternative input-style"
                      placeholder="yourname@mail.com"
@@ -90,10 +89,10 @@ const RegisterPageOne = ({ register, history }) => {
                      onChange={ e => onEmailValueChange(e)}
                 />
                 {
-                    email.length > 0 && validEmailCheck && <p className="form-warning">Input a valid email address</p>
+                    email.length > 0 && validEmailCheck && <p className="form-warning set-position">Input a valid email address</p>
                 }
              </FormGroup>
-            <FormGroup>
+            <FormGroup className="form-group-margin">
                 <Input
                     className="form-control-alternative input-style"
                      placeholder="password"
@@ -104,12 +103,12 @@ const RegisterPageOne = ({ register, history }) => {
                      onChange={ e => onPasswordValueChane(e)}
                 />
                     {
-                        password.length <= 6 && password.length > 0 && <p className="form-warning">Password Field must be more than 6 characters</p>
+                        password.length <= 6 && password.length > 0 && <p className="form-warning set-position">Password Field must be more than 6 characters</p>
                     }
-                    </FormGroup>
-                    <br/>
+           </FormGroup>
+                 
           <FormGroup className="centered">
-              <Button className="btn-icon" disabled={validPasswordCheck || validEmailCheck } type="submit" color="warning" size="lg"> Sign Up {"  "} <i className="fa fa-user" aria-hidden="true"></i> </Button>
+              <Button disabled={validPasswordCheck || validEmailCheck } type="submit" color="warning" size="lg"> Sign Up </Button>
           </FormGroup>
           <p className="text-center text-dark login-details">Already Have An Account? <Link className="site-theme" to="/login">Login</Link></p>
                 </Form>

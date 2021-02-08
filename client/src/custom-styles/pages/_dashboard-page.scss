@@ -1,0 +1,33 @@
+.dashboard-container {
+    padding: 70px;
+
+    .profile-info {
+        .img-container {
+            max-width: 250px;
+            max-height: 250px;
+            margin-right: 25px;
+        }
+
+        .profile-details-container {
+            .profile-name {
+                font-size: 60px;
+                font-weight: 600;
+                color: var(--site-dark-color);
+            }
+            .profile-age-and-location {
+                font-size: 17px;
+                color: var(--site-dark-color);
+                font-weight: 700;
+            }
+            .profile-location {
+                font-weight: 700;
+                color: var(--site-dark-color);
+                margin-left: 70px;
+            }
+            .update-profile-button {
+                margin-top: 10px;
+            }
+        }
+    }
+}
+

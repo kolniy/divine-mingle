@@ -49,7 +49,6 @@ export const updateOrCreateUserProfile = (profileData, history, routeTo) => {
                 type: UPDATE_PROFILE,
                 payload: res.data
             })
-            dispatch(setAlert('Profile Updated Successfully', 'success'))
             history.push(`/${routeTo}`)
         } catch (error) {
             const errors = error.response.data.errors
@@ -83,7 +82,6 @@ export const uploadProfileImage = (imageFormData, history, routeTo) => {
             type: UPDATE_PROFILE,
             payload: res.data
             })
-            dispatch(setAlert('Image Uploaded successfully', 'success'))
             history.push(`/${routeTo}`)
         } catch (error) {
             const errors = error.response.data.errors

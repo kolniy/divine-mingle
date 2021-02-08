@@ -6,7 +6,7 @@
     background-size: cover !important;
     background-position: bottom !important;
     position: relative;
-    padding: 25px 5px;
+    padding: 71px 5px;
 }
   
 .register-cta .cta-heading{
@@ -22,18 +22,28 @@
   }
   
   .register-cta .card{
-    padding: 22px 8px;
+    padding: 7px 5px;
     position: relative;
+    margin-top: -5px;
   }
   
   .register-cta .card .form-info {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
   }
   
   .register-cta .card .form-warning{
     color: var(--site-secondary-orange-color);
     font-size: 13px;
-    margin-top: 2px;
+    margin-top: 1px;
+  }
+
+.register-cta .card .form-group-margin{
+  margin-bottom: 25px;
+}
+
+  .set-position{
+    position: absolute;
+    z-index: 1000;
   }
   
   .register-cta .card .centered {
@@ -44,7 +54,7 @@
   
   .register-cta .card .login-details{
     font-size: 17px;
-    margin-top: 70px;
+    margin-top: 77px;
   }
   
   .register-cta .input-style {

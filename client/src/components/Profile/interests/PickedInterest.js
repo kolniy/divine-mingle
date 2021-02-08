@@ -7,11 +7,15 @@ const PickedInterest = ({ interestData, removeInterestItem }) => {
         <div className="picked-interest">
         {
           interestData.map((interest) =>
-              <Badge key={interest.id} color="warning" pill className="mr-1 mt-1">
+              <Badge key={interest.id}
+               color="warning"
+                pill className="mr-1 mt-1 pt-2 pb-2">
               {
                   interest.interestName
               }
-              <span key={interest.id} onClick={e => removeInterestItem(interest) } className="remove-interest-span">x</span>
+              <span key={interest.id}
+               onClick={e => removeInterestItem(interest) }
+               className="remove-interest-span">x</span>
           </Badge>)
       }
         </div>

@@ -1,21 +1,19 @@
 .profile-page {
     max-width: 100% !important;
-    max-height: 95vh !important;
+    max-height: 100vh !important;
     position: relative;
-    padding-top: 5px;
     margin-bottom: -15px;
   }
   
   .profile-page .card{
-    padding: 10px 10px;
+    padding: 7px 8px;
     border: none;
     position: relative;
   }
   
-  
   .profile-page .weighted {
       font-weight: 700;
-      font-size: 18px;
+      font-size: 15px;
   }
   
   .profile-page .card .text-uppercase{
@@ -23,7 +21,7 @@
   }
   
   .profile-page .form-group {
-    margin-bottom: .9rem;
+    margin-bottom: 8px;
   }
   
   .profile-page .form-warning {
@@ -38,17 +36,24 @@
   }
   
   .profile-page .photo-uploaded-container{
-    min-width: 170px;
-    min-height: 160px;
-    margin: 1.5px auto;
+    width: 150px;
+    min-height: 140px;
+    max-height: 140px;
+    margin: 1px auto;
   }
+
+  .profile-page .btn-change-photo{
+    background-color: #fff;
+    border: 1px solid var(--site-dark-color);
+  }
+
   
   .profile-page .list-group {
     border: .3px solid var(--site-orange-color);
     border-radius: 3px;
     transition: all .6s;
-    max-height: 170px;
-    overflow-y: scroll;
+    max-height: 140px;
+    overflow-y: auto;
     position: absolute;
     width: 80%;
     z-index: 1;
@@ -69,7 +74,11 @@
     color: var(--site-grey-color);
     cursor: pointer;
   }
-  
+
+  .profile-page .picked-interest {
+    margin-top: 9px;
+  }
+
   .profile-page .picked-interest .remove-interest-span{
     margin-left: 10px;
   }
