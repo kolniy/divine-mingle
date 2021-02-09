@@ -8,12 +8,11 @@ import './App.scss';
 
 import Register from "./components/Auth/Regsiter"
 import Login from "./components/Auth/Login"
-import Navigationbar from "./components/layout/Navbar"
 import Profilepageone from "./components/Profile/Profilepageone"
 import Profilepagetwo from "./components/Profile/Profilepagetwo"
 import Profilepagethree from "./components/Profile/Profilepagethree"
 import DashboardProfile from "./components/dashboard/UserProfile/Profiledisplay"
-import PrivateRoute from "./components/routing/PrivateRoute"
+// import PrivateRoute from "./components/routing/PrivateRoute"
 import Alert from "./components/layout/Alert"
 
 // REDUX STORE CONFIG
@@ -37,15 +36,14 @@ function App() {
   return (
     <Provider store={store}>
     <Router>
-      <Navigationbar />
       <Alert />
       <Switch>
         <Route path="/" exact component={Register} />
         <Route path="/login" exact component={Login} />
-        <PrivateRoute path="/profilepageone" exact component={Profilepageone} />
-        <PrivateRoute path="/profilepagetwo" exact component={Profilepagetwo} />
-        <PrivateRoute path="/profilepagethree" exact component={Profilepagethree} />
-        <PrivateRoute path="/dashboard/profile" exact component={DashboardProfile} />
+        <Route path="/profilepageone" exact component={Profilepageone} />
+        <Route path="/profilepagetwo" exact component={Profilepagetwo} />
+        <Route path="/profilepagethree" exact component={Profilepagethree} />
+        <Route path="/dashboard/profile" exact component={DashboardProfile} />
       </Switch>
     </Router>
     </Provider>

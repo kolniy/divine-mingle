@@ -12,6 +12,7 @@ import {
     FormGroup,
     Button
 } from "reactstrap"
+import Navbar from "../../components/layout/Navbar"
 import { loginUser } from "../../actions/auth"
 
 const Login = ({ login, history }) => {
@@ -35,6 +36,10 @@ const Login = ({ login, history }) => {
 
     return <>
         <section className="section-login">
+            <Navbar/>
+            <br/>
+            <br/>
+            <br/>
             <Container>
                 <Row>
                 <Col md="4"></Col>

@@ -1,0 +1,17 @@
+.navlink-search{
+    .input-group-alternative{
+        box-shadow: none;
+        width: 260px;
+    }
+
+    .input-group-text{
+        border-top-right-radius: 20px !important;
+        border-bottom-right-radius: 20px !important;
+    }
+
+    .form-control {
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        width: 80%;
+    }
+}

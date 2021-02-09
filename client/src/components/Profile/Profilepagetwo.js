@@ -17,6 +17,7 @@ import dropDownData from "../../temp/dropDownData"
 import filterInterestOnType from "../../utilities/filterInterestOnUserType"
 import InterestList from "./interests/InterestList"
 import PickedInterest from "./interests/PickedInterest"
+import Navbar from "../../components/layout/Navbar"
 
 const Profilepagetwo = ({ updateOrCreateProfile, history, profile }) => {
 
@@ -99,6 +100,7 @@ const Profilepagetwo = ({ updateOrCreateProfile, history, profile }) => {
 
     return <>
         <section className="profile-page">
+            <Navbar />
         <Container>
             <Row>
                 <Col md="5">

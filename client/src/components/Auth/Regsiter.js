@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import { Container, Row, Col, Card, CardBody, Form, FormGroup, Input, Button } from "reactstrap"
 import { signUpUser } from "../../actions/auth"
 import validateAnEmail from "../../utilities/validateEmail"
+import Navbar from "../../components/layout/Navbar"
 
 const RegisterPageOne = ({ register, history }) => {
 
@@ -63,6 +64,8 @@ const RegisterPageOne = ({ register, history }) => {
 
     return <>
         <section className="register-page-one">
+                   <Navbar />
+            <br/><br/><br/>
            <div className="register-cta">
            <Container>
                 <Row>

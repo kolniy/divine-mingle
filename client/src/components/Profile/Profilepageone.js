@@ -18,6 +18,7 @@ import ReactDatetime from "react-datetime"
 import Moment from "moment"
 import profilepageoneimage from "../../images/regfirstStepPic.jpg"
 import { updateOrCreateUserProfile, getProfile } from "../../actions/profile"
+import Navbar from "../../components/layout/Navbar"
 
 const Profilepageone = ({ updateOrCreateProfile, history, profile }) => {
 
@@ -84,6 +85,7 @@ const Profilepageone = ({ updateOrCreateProfile, history, profile }) => {
     }
 return <>
     <section className="profile-page">
+      <Navbar />
         <Container>
             <Row>
                 <Col md="5">

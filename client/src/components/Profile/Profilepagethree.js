@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom"
 import { uploadProfileImage } from "../../actions/profile"
 import { Container, Row, Col, Card, CardBody } from "reactstrap"
 import ProfileUpload from "./picture-upload/ProfileUpload"
+import Navbar from "../../components/layout/Navbar"
 import ResetOrSaveProfile from "./picture-upload/ResetOrSaveProfile"
 import dummyAvatar from "../../images/dummy-avatar.png"
 
@@ -43,6 +44,7 @@ const Profilepagethree = ({ saveImage, history }) => {
 
     return <>
     <section className="profile-page">
+        <Navbar />
         <Container>
             <Row>
                 <Col md="4"></Col>
