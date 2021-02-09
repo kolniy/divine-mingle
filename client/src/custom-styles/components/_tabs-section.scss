@@ -1,0 +1,27 @@
+.tabs-section {
+    margin-top: 20px;
+
+    .card {
+        border: none;
+    }
+    
+    .tabs-container{
+        border-bottom: 1.5px solid #B1AFAF;
+        width: 100%;
+    }
+
+    .nav-pills .nav-link {
+        box-shadow: none;
+        font-weight: 600;
+        color: #818181;
+    }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+    color: #fff;
+    background-color: #fff;
+    border-bottom: 5px solid var(--site-orange-color);
+    color: #000 !important;
+    border-radius: 0;
+    }
+}
+

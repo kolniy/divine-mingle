@@ -25,11 +25,6 @@
         width: 240px;
     }
 
-    .dropdown-menu .dropdown-item-container{
-        width: 80%;
-        margin: 0 auto;
-    }
-
     .dropdown-menu-right::before {
         background-color: #4b4b4b;
     }
@@ -37,6 +32,11 @@
     .dropdown-item {
         color: #fff;
         transition: all .4s;
+
+        .dropdown-item-container{
+            width: 80%;
+            margin: 0 auto;
+        }
 
         .dropdown-item-badge-colored {
             color: #fff;
@@ -53,11 +53,6 @@
 
     .dropdown-item:hover {
         background-color: #666666;
-    }
-
-    .dropdown-item:first-child{
-        border-bottom: 1px solid #fff;
-        padding-bottom: 3px;
     }
 
     .dropdown-item a {

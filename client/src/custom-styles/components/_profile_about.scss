@@ -1,0 +1,24 @@
+.about-profile {
+    margin-top: 20px;
+
+    .about-section {
+        margin-bottom: 40px;
+    }
+
+    .sub-heading{
+        color: var(--site-dark-color);
+    }
+
+    .bordered {
+        border-bottom: 1.7px solid #B1AFAF;
+        padding-bottom: 2px;
+    }
+
+    .profile-spec{
+        font-weight: 300;
+    }
+
+    .paragraph {
+      color: #6F6C6C;
+    }
+}
