@@ -15,6 +15,7 @@ import DashboardProfile from "./components/dashboard/UserProfile/Profiledisplay"
 import VisitorsDisplay from "./components/dashboard/visitors/VisitorsDisplay"
 import MatchDisplay from "./components/dashboard/matches/MatchDisplay"
 import FavouriteDisplay from "./components/dashboard/favourites/FavouriteDisplay"
+import ForumsDisplay from "./components/dashboard/forum/Forums-display"
 // import PrivateRoute from "./components/routing/PrivateRoute"
 import Alert from "./components/layout/Alert"
 
@@ -49,7 +50,8 @@ function App() {
         <Route path="/dashboard/profile" exact component={DashboardProfile} />
         <Route path="/dashboard/visitors" exact component={VisitorsDisplay} />
         <Route path="/dashboard/match" exact component={MatchDisplay} />
-        <Route path="/dashboard/favourite" component={FavouriteDisplay} />
+        <Route path="/dashboard/favourite" exact component={FavouriteDisplay} />
+        <Route path="/dashboard/forum" exact component={ForumsDisplay} />
       </Switch>
     </Router>
     </Provider>
