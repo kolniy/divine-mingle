@@ -1,0 +1,26 @@
+.visitors-display-item {
+    .card{
+        border:none;
+        transition: transform .3s;
+    }
+
+    .card .card-title{
+        color: var(--site-dark-color);
+        font-weight: 600;
+    }
+
+    .card .card-text {
+        color: var(--site-dark-color);
+        font-weight: 300;
+        font-size: 14px;
+    }
+
+    .card .card-title:hover {
+        cursor: pointer;
+        color: var(--site-dark-color);
+    }
+
+    .card:hover {
+        transform: translateY(-6px);
+    }
+}

@@ -132,6 +132,13 @@ const Navlinks = () => (
                       </Link>
                       </div>
                       </DropdownItem>
+                      <DropdownItem>
+                      <div className="dropdown-item-container">
+                      <Link to="/login">
+                       Sign Out
+                      </Link>
+                      </div>
+                      </DropdownItem>
                     </DropdownMenu>
                   </UncontrolledDropdown>
         </Nav>

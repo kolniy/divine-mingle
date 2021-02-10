@@ -5,7 +5,7 @@ import {
     Row,
     Button
 } from "reactstrap"
-import Profile from "../../../images/profile.jpg"
+import Profile from "../../../images/profile-test-image.jpg"
 
 const BasicProfileInfo = () => {
     return <>

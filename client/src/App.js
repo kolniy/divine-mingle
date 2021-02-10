@@ -12,6 +12,9 @@ import Profilepageone from "./components/Profile/Profilepageone"
 import Profilepagetwo from "./components/Profile/Profilepagetwo"
 import Profilepagethree from "./components/Profile/Profilepagethree"
 import DashboardProfile from "./components/dashboard/UserProfile/Profiledisplay"
+import VisitorsDisplay from "./components/dashboard/visitors/VisitorsDisplay"
+import MatchDisplay from "./components/dashboard/matches/MatchDisplay"
+import FavouriteDisplay from "./components/dashboard/favourites/FavouriteDisplay"
 // import PrivateRoute from "./components/routing/PrivateRoute"
 import Alert from "./components/layout/Alert"
 
@@ -44,6 +47,9 @@ function App() {
         <Route path="/profilepagetwo" exact component={Profilepagetwo} />
         <Route path="/profilepagethree" exact component={Profilepagethree} />
         <Route path="/dashboard/profile" exact component={DashboardProfile} />
+        <Route path="/dashboard/visitors" exact component={VisitorsDisplay} />
+        <Route path="/dashboard/match" exact component={MatchDisplay} />
+        <Route path="/dashboard/favourite" component={FavouriteDisplay} />
       </Switch>
     </Router>
     </Provider>

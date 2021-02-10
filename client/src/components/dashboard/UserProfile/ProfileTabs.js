@@ -12,6 +12,7 @@ import {
 } from "reactstrap";
 import ProfileAboutComponent from "./ProfileAboutComponent"
 import ProfilePhotoComponent from "./ProfilePhotoComponent"
+import ProfileQuestionsComponent from "./ProfileQuestionsComponent"
 
 const ProfileTabs = () => {
 
@@ -82,7 +83,7 @@ const ProfileTabs = () => {
                     <ProfilePhotoComponent/>
                 </TabPane>
                 <TabPane tabId="tabs3">
-                <p className="lead">This is the questions section</p>
+                  <ProfileQuestionsComponent />
                 </TabPane>
             </TabContent>
         </CardBody>

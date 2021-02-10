@@ -9,81 +9,81 @@ const ProfilePhoto = () => {
         <Col className="mb-4" sm="3" xs="6">
             <img
             alt="..."
-            className=" img-fluid"
+            className="img-fluid"
             src={samplePhoto}
           />
         </Col>
         <Col className="mb-4" sm="3" xs="6">
             <img
             alt="..."
-            className=" img-fluid"
+            className="img-fluid"
             src={samplePhoto}
           />
         </Col>
         <Col className="mb-4" sm="3" xs="6">
             <img
             alt="..."
-            className=" img-fluid"
+            className="img-fluid"
             src={samplePhoto}
           />
         </Col>
         <Col className="mb-4" sm="3" xs="6">
             <img
             alt="..."
-            className=" img-fluid"
+            className="img-fluid"
             src={samplePhoto}
           />
         </Col>
         <Col className="mb-4" sm="3" xs="6">
             <img
             alt="..."
-            className=" img-fluid"
+            className="img-fluid"
             src={samplePhoto}
           />
         </Col>
         <Col className="mb-4" sm="3" xs="6">
             <img
             alt="..."
-            className=" img-fluid"
+            className="img-fluid"
             src={samplePhoto}
           />
         </Col>
         <Col className="mb-4" sm="3" xs="6">
             <img
             alt="..."
-            className=" img-fluid"
+            className="img-fluid"
             src={samplePhoto}
           />
         </Col>
         <Col className="mb-4" sm="3" xs="6">
             <img
             alt="..."
-            className=" img-fluid"
+            className="img-fluid"
             src={samplePhoto}
           />
         </Col>
         <Col className="mb-4" sm="3" xs="6">
             <img
             alt="..."
-            className=" img-fluid"
+            className="img-fluid"
             src={samplePhoto}
           />
         </Col><Col className="mb-4" sm="3" xs="6">
             <img
             alt="..."
-            className=" img-fluid"
+            className="img-fluid"
             src={samplePhoto}
           />
         </Col><Col className="mb-4" sm="3" xs="6">
             <img
             alt="..."
-            className=" img-fluid"
+            className="img-fluid"
             src={samplePhoto}
           />
         </Col><Col className="mb-4" sm="3" xs="6">
             <img
             alt="..."
-            className=" img-fluid"
+            className="img-fluid"
             src={samplePhoto}
           />
         </Col>

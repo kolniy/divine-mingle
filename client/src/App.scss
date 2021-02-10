@@ -10,9 +10,17 @@
 @import "./custom-styles/components/private-navbar";
 @import "./custom-styles/components/profile_about";
 @import "./custom-styles/components/profile-photos";
+@import "./custom-styles/components/profile-questions";
+@import "./custom-styles/components/visitors-display-container";
+@import "./custom-styles/components/visitors-display-item";
+@import "./custom-styles/components/match-display-container";
+@import "./custom-styles/components/match-display-item";
+@import "./custom-styles/components/favourite-display-container";
 
 @import "./custom-styles/pages/register";
 @import "./custom-styles/pages/profile-page";
 @import "./custom-styles/pages/dashboard-page";
 @import "./custom-styles/pages/login";
-
+@import "./custom-styles/pages/visitors-display";
+@import "./custom-styles/pages/match-display";
+@import "./custom-styles/pages/favourite-display";

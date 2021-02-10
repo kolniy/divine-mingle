@@ -1,4 +1,11 @@
 .profile-photo{
     margin-top: 20px;
-    
+img {
+    transition: all .5s;
+}
+
+img:hover{
+    cursor:pointer;
+    transform: scale(1.2);
+    }
 }

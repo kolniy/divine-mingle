@@ -1,0 +1,21 @@
+.profile-questions{
+    margin-top: 20px;
+
+    .individual-question {
+        margin-top: 40px;
+        margin-bottom: 30px;
+        border-bottom: 1.4px solid #E3E1E1;
+
+        & .question-item {
+            margin-bottom: 15px;
+            color: var(--site-dark-color);
+            font-weight: 380;
+        }
+
+        & .question-answer {
+            font-weight: 800;
+            color: var(--site-dark-color);
+        }
+    }
+
+}
