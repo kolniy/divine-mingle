@@ -1,0 +1,41 @@
+.comment-box{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    
+    .comment-count{
+        font-weight: 700;
+        color: var(--site-dark-color);
+        margin-bottom: 10px;
+    }
+
+    .commenters-profilepic-and-input {
+
+    .commenters-image-box{
+        height: 110px;
+        min-width: 100% !important; 
+
+        img {
+            max-height: 100%;
+        }
+    }
+
+    .comment-input-style {
+        border-radius: 0;
+      }
+
+      .comment-input-style::placeholder{
+        position: absolute;
+        bottom: 0;
+        margin-left: 10px;
+        margin-bottom: 10px;
+     }
+    }
+
+    .btn-share {
+        margin-top: 15px;
+        border-radius: 0;
+        width: 120px;
+        float: right;
+    }
+}

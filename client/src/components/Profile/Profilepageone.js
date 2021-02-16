@@ -19,6 +19,7 @@ import Moment from "moment"
 import profilepageoneimage from "../../images/regfirstStepPic.jpg"
 import { updateOrCreateUserProfile, getProfile } from "../../actions/profile"
 import Navbar from "../../components/layout/Navbar"
+import axios from "axios"
 
 const Profilepageone = ({ updateOrCreateProfile, history, profile }) => {
 
@@ -28,6 +29,9 @@ const Profilepageone = ({ updateOrCreateProfile, history, profile }) => {
      username:'',
      dateofbirth: Moment()
    })
+   const [ userLocation, setUserLocation ] = useState(null)
+
+   const [ existingUsernamesFromBD, updateExisitUsernamesFromBD ] = useState([])
 
    const [ validationInfo, updateValidationInfo ] = useState({
     validFistname: true,
@@ -50,6 +54,16 @@ const Profilepageone = ({ updateOrCreateProfile, history, profile }) => {
     }
    }, [profile])
 
+   useEffect(() => { // get user location when components loads
+    if(!navigator.geolocation){
+      return alert('Geolocation is not supported by your browser.')
+    }
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords
+      setUserLocation({latitude, longitude})
+      })
+   }, [])
+
    // block of code to ensure datetimepicker does not 
    // future dates.
    const futureDates = Moment().add(1, 'day')
@@ -57,10 +71,58 @@ const Profilepageone = ({ updateOrCreateProfile, history, profile }) => {
      return current.isBefore(futureDates)
    }
 
-   const profileUpdateHandler = (e) => upDateProfileData({
-     ...profileData,
-     [e.target.name]: e.target.value
-   })
+   const profileUpdateHandler = (e, validationName) => {
+    upDateProfileData({
+      ...profileData,
+      [e.target.name]: e.target.value
+      
+    })
+     if(e.target.value.length === 0){ // update the validation state
+    updateValidationInfo({
+      ...validationInfo,
+      [validationName]: false
+    })
+   } else if(e.target.value.length > 0) {
+    updateValidationInfo({
+      ...validationInfo,
+      [validationName]: true
+    })
+   }
+   }
+
+   const handleUsernameUpdate = (e, validationName) => { 
+    upDateProfileData({
+      ...profileData,
+      username: e.target.value
+    })
+    if(e.target.value.length === 0){ // update the validation state
+      updateValidationInfo({
+        ...validationInfo,
+        [validationName]: false
+      })
+     } else if(e.target.value.length > 0) {
+      updateValidationInfo({
+        ...validationInfo,
+        [validationName]: true
+      })
+     }
+   }
+
+   const getUserProfileNameByInputs = async (searchQuery) => {
+    try {
+      if(searchQuery.length > 0){  // if condition to prevent the query from running 
+        // when the components just mounts and input is still empty
+        const res = await axios.get(`/api/v1/profile/username?username=${searchQuery}`)
+        updateExisitUsernamesFromBD(res.data)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+   }
+
+   useEffect(() => {
+    getUserProfileNameByInputs(profileData.username)
+   }, [profileData.username])
 
    const { firstname, lastname, username } = profileData
    const { validFistname, validLastName, validUsername } = validationInfo
@@ -71,7 +133,7 @@ const Profilepageone = ({ updateOrCreateProfile, history, profile }) => {
         ...validationInfo,
         [validationName]: false
       })
-     } else {
+     } else if(e.target.value.length > 0) {
       updateValidationInfo({
         ...validationInfo,
         [validationName]: true
@@ -81,7 +143,10 @@ const Profilepageone = ({ updateOrCreateProfile, history, profile }) => {
 
    const onFormSubmit = (e) => {
         e.preventDefault()
-        updateOrCreateProfile(profileData, history, 'profilepagetwo')
+        updateOrCreateProfile({
+          ...profileData,
+          userLocation
+        }, history, 'profilepagetwo')
     }
 return <>
     <section className="profile-page">
@@ -101,7 +166,7 @@ return <>
                      value={firstname}
                      name="firstname"
                      required
-                     onChange={e => profileUpdateHandler(e)}
+                     onChange={e => profileUpdateHandler(e, "validFistname")}
                      onBlur={e => checkInputsOnBlur(e, "validFistname")}
                 />
                 {
@@ -117,7 +182,7 @@ return <>
                      value={lastname}
                      name="lastname"
                      required
-                     onChange={e => profileUpdateHandler(e)}
+                     onChange={e => profileUpdateHandler(e, "validLastName")}
                      onBlur={e => checkInputsOnBlur(e, "validLastName")}
                 />
                 {
@@ -157,16 +222,26 @@ return <>
                      value={username}
                      name="username"
                      required
-                     onChange={e => profileUpdateHandler(e)}
+                     onChange={e => handleUsernameUpdate(e, "validUsername")}
                      onBlur={e => checkInputsOnBlur(e, "validUsername")}
                 />
                 {
                   !validUsername && <p className="form-warning">username cannot be empty</p>
                 }
+                {
+                  existingUsernamesFromBD.length > 0 && <p className="form-warning">username already exists</p>
+                }
             </FormGroup>
 
           <FormGroup className="centered">
-              <Button disabled={ !validFistname || !validLastName || !validUsername } block className="btn-icon" type="submit" color="warning" size="lg">NEXT</Button>
+              <Button disabled={ 
+                  !validFistname ||  // disable button on empty firstname
+                  !validLastName ||  // disable button on empty lastname
+                  !validUsername ||  // disable button on empty username
+                  existingUsernamesFromBD.length > 0  // disable button when inputed already username exists
+                   } block className="btn-icon"
+                    type="submit" color="warning" 
+                    size="lg">NEXT</Button>
           </FormGroup>
         </Form>
 

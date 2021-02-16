@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { connect } from "react-redux"
 import {
     UncontrolledCollapse,
     NavbarBrand,
@@ -9,7 +8,7 @@ import {
     Row,
     Col,
   } from "reactstrap";
-  import Logo from "../../images/divineminglelogo.png"
+  import Logo from "../../images/DivineminglelogoSVG.svg"
   import NavlinkSearch from "./navlinks/NavlinkSearchInput"
   import Navlinks from "./navlinks/Navlinks"
 
@@ -68,8 +67,4 @@ const Navigationbar = ({ auth }) => {
   </>
 }
 
-const mapStateToProps = (state) => ({
-    auth: state.auth
-})
-
-export default connect(mapStateToProps)(Navigationbar)
+export default Navigationbar

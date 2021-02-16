@@ -3,8 +3,10 @@ import { REGISTER_SUCCESS, REGISTER_FAIL,
      LOAD_USER, 
      LOGIN_SUCCESS,
      LOGIN_FAIL,
-      AUTH_ERROR } from "./types";
-import { setAlert } from "./alert"
+     AUTH_ERROR,
+     LOGOUT,
+     CLEAR_PROFILE
+    } from "./types";
 import setAuthToken from "../utilities/setAuthToken"
 
 export const loadUser = () => {
@@ -22,7 +24,7 @@ export const loadUser = () => {
             const errors = error.response.data.errors
             if(errors){
                 errors.forEach(error => {
-                    dispatch(setAlert(error.msg, "danger"))
+                   alert(error.msg)
                 });
             }
             dispatch({
@@ -50,7 +52,12 @@ export const signUpUser = ({ email, password }, history) => {
             history.push('/profilepageone')
         } catch (error) {
             console.log(error)
-           
+            const errors = error.response.data.errors
+            if(errors){
+                errors.forEach(error => {
+                   alert(error.msg)
+                });
+            }
             dispatch({
                 type: REGISTER_FAIL 
             })
@@ -76,9 +83,26 @@ export const loginUser = ({ email, password }, history) => {
             history.push('/dashboard/profile')
         } catch (error) {
             console.log(error)
+            const errors = error.response.data.errors
+            if(errors){
+                errors.forEach(error => {
+                   alert(error.msg)
+                });
+            }
             dispatch({
                 type: LOGIN_FAIL 
             })
         }
+    }
+}
+
+export const logout = () => {
+    return (dispatch) => {
+        dispatch({
+            type: LOGOUT
+        })
+        dispatch({
+            type: CLEAR_PROFILE
+        })
     }
 }

@@ -16,7 +16,8 @@ import VisitorsDisplay from "./components/dashboard/visitors/VisitorsDisplay"
 import MatchDisplay from "./components/dashboard/matches/MatchDisplay"
 import FavouriteDisplay from "./components/dashboard/favourites/FavouriteDisplay"
 import ForumsDisplay from "./components/dashboard/forum/Forums-display"
-// import PrivateRoute from "./components/routing/PrivateRoute"
+import ForumArticleDisplay from "./components/dashboard/forum-article/ForumArticleDisplay"
+import PrivateRoute from "./components/routing/PrivateRoute"
 import Alert from "./components/layout/Alert"
 
 // REDUX STORE CONFIG
@@ -47,11 +48,12 @@ function App() {
         <Route path="/profilepageone" exact component={Profilepageone} />
         <Route path="/profilepagetwo" exact component={Profilepagetwo} />
         <Route path="/profilepagethree" exact component={Profilepagethree} />
-        <Route path="/dashboard/profile" exact component={DashboardProfile} />
-        <Route path="/dashboard/visitors" exact component={VisitorsDisplay} />
-        <Route path="/dashboard/match" exact component={MatchDisplay} />
-        <Route path="/dashboard/favourite" exact component={FavouriteDisplay} />
-        <Route path="/dashboard/forum" exact component={ForumsDisplay} />
+        <PrivateRoute path="/dashboard/profile" exact component={DashboardProfile} />
+        <PrivateRoute path="/dashboard/visitors" exact component={VisitorsDisplay} />
+        <PrivateRoute path="/dashboard/match" exact component={MatchDisplay} />
+        <PrivateRoute path="/dashboard/favourite" exact component={FavouriteDisplay} />
+        <PrivateRoute path="/dashboard/forum" exact component={ForumsDisplay} />
+        <Route path="/dashboard/forum/article/articleId" exact component={ForumArticleDisplay} />
       </Switch>
     </Router>
     </Provider>

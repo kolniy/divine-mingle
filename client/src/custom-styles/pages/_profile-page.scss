@@ -35,10 +35,13 @@
   }
   
   .profile-page .photo-uploaded-container{
-    width: 150px;
-    min-height: 140px;
-    max-height: 140px;
+    width: 180px;
+    height: 180px;
     margin: 1px auto;
+
+    img {
+      height:100%;
+    }
   }
 
   .profile-page .btn-change-photo{

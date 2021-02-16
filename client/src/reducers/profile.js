@@ -1,4 +1,4 @@
-import { UPDATE_PROFILE, GET_PROFILE, PROFILE_ERROR } from "../actions/types"
+import { UPDATE_PROFILE, GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE } from "../actions/types"
 
 const initialState = {
     userprofile: null,
@@ -22,6 +22,7 @@ const profileReducer = (state = initialState, action) => {
                  loading: false
              }
         case PROFILE_ERROR:
+        case CLEAR_PROFILE:    
             return {
                 ...state,
                 userprofile: null,

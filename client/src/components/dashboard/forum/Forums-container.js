@@ -8,9 +8,15 @@ import workImage from "../../../images/working-atmosphere.jpg"
 const ForumsContainer = () => {
     return <>
         <div className="forums-container">
-            <ForumsItem forumImg={manInSuit} />
-            <ForumsItem forumImg={maldivesImage} />
-            <ForumsItem forumImg={workImage} />
+            <ForumsItem forumImg={manInSuit}
+             forumHeader="Pastor Goodwill's couple prayer session"
+              forumAuthor="Pastor Goodwill's" />
+            <ForumsItem forumImg={maldivesImage} 
+            forumHeader="Places you can go for a romantic vacation"
+             forumAuthor="Kelly Unyon" />
+            <ForumsItem forumImg={workImage} 
+            forumHeader="Balancing work and relationship" 
+            forumAuthor="Kelly Unyon" />
         </div>
     </>
 }

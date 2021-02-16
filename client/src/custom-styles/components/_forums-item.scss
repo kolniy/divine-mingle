@@ -34,8 +34,15 @@
            cursor: pointer;
          }
 
+         .forum-timestamp {
+             color: #6F6C6C;
+             font-size: 13px;
+         }
+
          .forum-article-author {
             float: right;
+            color: #6F6C6C;
+            font-size: 13px;
          }
     }
 }

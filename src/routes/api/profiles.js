@@ -8,6 +8,7 @@ import { memoryStorage } from "multer"
 import sharp from "sharp"
 import dataUri from "../../helpers/dataUri"
 import cloudinary from "cloudinary"
+import { async } from "regenerator-runtime"
 
 const router = express.Router()
 
@@ -38,7 +39,8 @@ router.post('/', [
         interests,
         profilepic,
         dateofbirth,
-        profilecompleted
+        profilecompleted,
+        userLocation
     } = req.body
   
     const profileObject = {}
@@ -47,6 +49,7 @@ router.post('/', [
     if(lastname) profileObject.lastname = lastname
     if(username) profileObject.username = username
     if(ethnicity) profileObject.ethnicity = ethnicity
+    if(userLocation) profileObject.userLocation = userLocation
     if(denomination) profileObject.denomination = denomination
     if(interests) profileObject.interests = interests
     if(profilepic)  profileObject.profilepic = profilepic
@@ -131,6 +134,51 @@ async (req, res) => {
 
 })
 
+router.get('/username', async (req, res) => {
+   const usernameQuery = req.query.username
+   if(!usernameQuery){
+    return res.status(400).json({
+        errors: [{
+            msg: "username not valid"
+        }]
+    })
+}
+    try {
+    const profiles = await Profile.find({ username: usernameQuery })
+    res.json(profiles)
+    } catch (error) {
+        console.error(error)
+        res.status(500).send("Server Error")
+    }
+})
+
+router.get('/matches', auth, async (req, res) => {
+    try {
+        let profileToBeMatched = await Profile.findOne({ user: req.user.id })
+        
+        if(!profileToBeMatched){
+            return res.status(400).json({
+                errors: [{
+                    msg: "Profile not found"
+                }]
+            })
+        }
+
+     let interestToMatch = profileToBeMatched.interests.map((interest) => interest.interestName)
+     let matchedUsers = await Profile.find({
+         'interests.interestName' : { $in: interestToMatch },
+         user: { $ne: req.user.id} // get all the matched profiles except profile of the 
+         // currently logged in user
+     })
+
+       res.json(matchedUsers)
+
+    } catch (error) {
+        console.error(error)
+        res.status(500).send("Server Error")
+    }
+})
+
 // private route
 // route to delete user profile and account
 router.delete('/', auth, async (req, res) => {
@@ -151,4 +199,4 @@ router.delete('/', auth, async (req, res) => {
     }
 })
 
-export default router
+export default router                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

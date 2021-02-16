@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { connect } from "react-redux"
 import { 
     Nav,
     NavItem,
@@ -9,9 +10,17 @@ import {
     DropdownItem,
     DropdownToggle
 } from "reactstrap"
+import { logout } from "../../../actions/auth"
 import profileTestImage from "../../../images/profile-test-image.jpg"
 
-const Navlinks = () => (
+const Navlinks = ({ logout }) => {
+
+const handleLogOut = (e) => {
+    e.preventDefault()
+    logout()
+}
+
+  return (
     <>
     <Nav className="ml-small" navbar>
                   <NavItem>
@@ -134,7 +143,7 @@ const Navlinks = () => (
                       </DropdownItem>
                       <DropdownItem>
                       <div className="dropdown-item-container">
-                      <Link to="/login">
+                      <Link onClick={e => handleLogOut(e)}>
                        Sign Out
                       </Link>
                       </div>
@@ -144,5 +153,10 @@ const Navlinks = () => (
         </Nav>
     </>
 )
+}
 
-export default Navlinks
+const mapDispatchToProps = (dispatch) => ({
+  logout: () => dispatch(logout())
+})
+
+export default connect(null, mapDispatchToProps)(Navlinks)

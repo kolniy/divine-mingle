@@ -5,9 +5,9 @@ import {
     Navbar,
     Container,
   } from "reactstrap";
-  import Logo from "../../images/divineminglelogo.png"
+  import Logo from "../../images/DivineminglelogoSVG.svg"
 
-const Navigationbar = ({ auth }) => {
+const Navigationbar = () => {
   return <>
     <Navbar
           className="navbar-horizontal navbar-dark bg-warning custom-navbar-styles"

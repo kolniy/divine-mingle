@@ -1,7 +1,7 @@
 import React from "react"
 import { Row, Col } from "reactstrap"
 
-const ForumsItem = ({ forumImg }) => {
+const ForumsItem = ({ forumImg, forumHeader ,forumAuthor }) => {
     return <>
        <div className="forum-item shadow">
             <Row>
@@ -16,7 +16,7 @@ const ForumsItem = ({ forumImg }) => {
                 </Col>
                 <Col md="9" sm="9">
                     <div className="forum-info">
-                        <h4 className="forum-info-header">Pastor Goodill's couple prayer Session</h4>
+                        <h4 className="forum-info-header">{forumHeader}</h4>
                         <p className="forum-info-paragraph">Lorem ipsum
                          dolor sit amet, consectetur adipiscing elit, sed do 
                          eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -24,12 +24,13 @@ const ForumsItem = ({ forumImg }) => {
                           laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
                            dolor in reprehenderit in voluptate velit esse.
                            </p>
-                          <div className="forum-details">
+                          <div className="forum-details mb-2">
                               <span className="forum-timestamp">
-                                    here
+                                   <i className="fa fa-calendar mr-2"></i>
+                                   16:20 GMT, 01/21/2021
                               </span>
                               <span className="forum-article-author">
-                                    here
+                                    By {forumAuthor}
                               </span>
                           </div>
                     </div>

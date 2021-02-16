@@ -1,0 +1,36 @@
+.forum-article-display{
+
+    .article-and-comments-container{
+        border-right: 1px solid #c4c4c4;
+        padding-right: 20px;
+        max-width: 100%;
+    }
+
+    .article-display-name{
+        color: var(--site-dark-color);
+        font-weight: 800;
+        font-size: 50px;
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .article-display-image {
+        height: 330px;
+        margin-top: 8px;
+
+        img{
+            height: 100%;
+        }
+    }
+
+    .article-text{
+        margin-top: 25px;
+        color: var(--site-dark-color);
+        font-weight: 450;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+}

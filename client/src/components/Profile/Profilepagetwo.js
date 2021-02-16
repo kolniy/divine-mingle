@@ -72,15 +72,18 @@ const Profilepagetwo = ({ updateOrCreateProfile, history, profile }) => {
         }
 
         const addNewInterestItem = (item) => {
-            upDateProfileData({
-                ...profileData,
-                interests: [
-                    ...profileData.interests,
-                    item
-                ]
-            })
-            updateInterestInput('')  // empty the interest seachbox query to remove the dropdown
-        }
+           if(interests.length === 5){
+               return alert("You cannot have more than 5 interests")
+           } 
+           upDateProfileData({
+            ...profileData,
+            interests: [
+                ...profileData.interests,
+                item
+            ]
+        })
+        updateInterestInput('')  // empty the interest seachbox query to remove the dropdown
+    }
 
         const removeInterestItem = (item) => {
             upDateProfileData({

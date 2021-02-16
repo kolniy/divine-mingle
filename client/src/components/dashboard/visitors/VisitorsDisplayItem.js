@@ -13,12 +13,14 @@ const VisitorsDisplayItem = ({ cardImage, profileName }) => {
     <Col className="mb-4" sm="3" xs="6">
         <div className="visitors-display-item">
         <Card className="shadow">
+        <div className="card-image-container">
         <CardImg
           alt="..."
           src={cardImage}
           className="img-fluid"
           top
         ></CardImg>
+        </div>
         <CardBody>
           <CardTitle>{profileName}</CardTitle>
           <CardText>

@@ -26,6 +26,14 @@ const profileSchema = ({
             interestName: String
         }]
     },
+    userLocation: {
+        latitude: {
+            type: String
+        },
+        longitude: {
+            type: String
+        }
+    },
     profilepic: {
         type: String
     },
