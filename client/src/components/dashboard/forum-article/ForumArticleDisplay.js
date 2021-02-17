@@ -4,6 +4,7 @@ import PrivateNavbar from "../../layout/PrivateNavbar"
 import articleDisplayImage from "../../../images/maldives.jpg"
 import AddCommentBox from "./AddCommentBox"
 import CommentContainer from "./CommentContainer"
+import RelatedForumArticleItem from "./RelatedForumArticleItem"
 
 const ForumArticleDisplay = () => {
     return <>
@@ -12,7 +13,7 @@ const ForumArticleDisplay = () => {
         <br/><br/>
         <Container fluid>
             <Row>
-                <Col className="d-none d-md-flex" md="3">
+                <Col className="d-none d-md-flex" md="2">
 
                 </Col>
                 <Col md="6">
@@ -49,9 +50,13 @@ const ForumArticleDisplay = () => {
                     <CommentContainer/>
                 </div>
                 </Col>
-                <Col md="3">
-              
-                </Col>
+            <Col md="4">
+                <div className="forum-article-more-read">
+                    <RelatedForumArticleItem/>
+                    <RelatedForumArticleItem/>
+                    <RelatedForumArticleItem/>
+                </div>
+            </Col>
             </Row>
         </Container>
     </section>
