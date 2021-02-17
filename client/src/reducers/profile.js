@@ -2,7 +2,7 @@ import { UPDATE_PROFILE, GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE } from "../ac
 
 const initialState = {
     userprofile: null,
-    loading: true,
+    profileLoading: true,
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -13,20 +13,20 @@ const profileReducer = (state = initialState, action) => {
              return {
                  ...state,
                  userprofile: payload,
-                 loading: false
+                 profileLoading: false
              }
         case GET_PROFILE: 
              return {
                  ...state,
                  userprofile: payload,
-                 loading: false
+                 profileLoading: false
              }
         case PROFILE_ERROR:
         case CLEAR_PROFILE:    
             return {
                 ...state,
                 userprofile: null,
-                loading: false
+                profileLoading: false
             }
         default:
             return state

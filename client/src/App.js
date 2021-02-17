@@ -18,6 +18,7 @@ import FavouriteDisplay from "./components/dashboard/favourites/FavouriteDisplay
 import ForumsDisplay from "./components/dashboard/forum/Forums-display"
 import ForumArticleDisplay from "./components/dashboard/forum-article/ForumArticleDisplay"
 import PrivateRoute from "./components/routing/PrivateRoute"
+import PubliceRoute from "./components/routing/PublicRoute"
 import Alert from "./components/layout/Alert"
 
 // REDUX STORE CONFIG
@@ -33,9 +34,7 @@ if(localStorage.getItem("token")){
 function App() {
 
   useEffect(() => {
-    store.dispatch(loadUser())
-    // @todo load user profile to check if user profile is complete and route accordingly
-    // console.log(store)
+    store.dispatch(loadUser()) // load user when app mounts, checks for authentication
   }, [])
 
   return (
@@ -43,11 +42,11 @@ function App() {
     <Router>
       <Alert />
       <Switch>
-        <Route path="/" exact component={Register} />
-        <Route path="/login" exact component={Login} />
-        <Route path="/profilepageone" exact component={Profilepageone} />
-        <Route path="/profilepagetwo" exact component={Profilepagetwo} />
-        <Route path="/profilepagethree" exact component={Profilepagethree} />
+        <PubliceRoute path="/" exact component={Register} />
+        <PubliceRoute path="/login" exact component={Login} />
+        <PrivateRoute path="/profilepageone" exact component={Profilepageone} />
+        <PrivateRoute path="/profilepagetwo" exact component={Profilepagetwo} />
+        <PrivateRoute path="/profilepagethree" exact component={Profilepagethree} />
         <PrivateRoute path="/dashboard/profile" exact component={DashboardProfile} />
         <PrivateRoute path="/dashboard/visitors" exact component={VisitorsDisplay} />
         <PrivateRoute path="/dashboard/match" exact component={MatchDisplay} />

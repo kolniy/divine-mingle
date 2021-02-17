@@ -8,7 +8,9 @@ import { memoryStorage } from "multer"
 import sharp from "sharp"
 import dataUri from "../../helpers/dataUri"
 import cloudinary from "cloudinary"
-import { async } from "regenerator-runtime"
+import getDistanceFromLatLongInKm from "../../helpers/getDistanceFromLatLongInKm"
+import determineMatchingStrength from "../../helpers/determineMatchingStrength"
+import sortProfilesByLocation from "../../helpers/sortProfilesByLocation"
 
 const router = express.Router()
 
@@ -165,13 +167,31 @@ router.get('/matches', auth, async (req, res) => {
         }
 
      let interestToMatch = profileToBeMatched.interests.map((interest) => interest.interestName)
-     let matchedUsers = await Profile.find({
+     let matchedProfiles = await Profile.find({
          'interests.interestName' : { $in: interestToMatch },
          user: { $ne: req.user.id} // get all the matched profiles except profile of the 
          // currently logged in user
      })
 
-       res.json(matchedUsers)
+     let matchesTobeSent = []
+      const { latitude : loggedInUserlat, longitude : loggedInUserLon } = profileToBeMatched.userLocation
+
+     matchedProfiles.forEach((profile) => {
+         profile = profile.toObject()  // return a normal mongoose 
+         // object with the defined schema fields
+        let matchingStrength = determineMatchingStrength(profile, interestToMatch)
+        let distanceBetweenUsers = getDistanceFromLatLongInKm(loggedInUserlat, loggedInUserLon, profile.userLocation.latitude, profile.userLocation.longitude)
+        let usersProfile = {
+            ...profile,
+            distance: Math.floor(distanceBetweenUsers),
+            matchingCount: matchingStrength
+        }
+        matchesTobeSent.push(usersProfile)
+     })
+     
+    // return the matched users sorted by the user with the 
+    // nearest location
+     res.json(sortProfilesByLocation(matchesTobeSent))
 
     } catch (error) {
         console.error(error)

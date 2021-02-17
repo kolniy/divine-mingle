@@ -81,6 +81,11 @@ const RegisterPageOne = ({ register, history }) => {
                 <h4 className="text-center text-dark">Sign up</h4>
                 </div>
             <Form onSubmit={e => onFormSubmit(e)}>
+            <input
+                    type="text"
+                    name={"address " + Math.random()}
+                    style={{display:"none"}}
+                />
                 <FormGroup className="form-group-margin">
                     <Input
                     className="form-control-alternative input-style"
@@ -90,6 +95,7 @@ const RegisterPageOne = ({ register, history }) => {
                      name="email"
                      required
                      onChange={ e => onEmailValueChange(e)}
+                     autoComplete="new-password"
                 />
                 {
                     email.length > 0 && validEmailCheck && <p className="form-warning set-position">Input a valid email address</p>
@@ -104,6 +110,7 @@ const RegisterPageOne = ({ register, history }) => {
                      name="password"
                      required
                      onChange={ e => onPasswordValueChane(e)}
+                     autoComplete="new-password"
                 />
                     {
                         password.length <= 6 && password.length > 0 && <p className="form-warning set-position">Password Field must be more than 6 characters</p>

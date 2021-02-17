@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { connect } from "react-redux"
-import { withRouter } from "react-router-dom"
+import { withRouter, Link } from "react-router-dom"
 import {
     Container,
     Row,
@@ -49,6 +49,11 @@ const Login = ({ login, history }) => {
                             Login</h4>
                     <CardBody>
                 <Form onSubmit={e => loginSubmit(e)}>
+                <input
+                    type="text"
+                    name={"address " + Math.random()}
+                    style={{display:"none"}}
+                />
                 <FormGroup className="form-group-margin">
                     <Input
                     className="form-control-alternative input-style"
@@ -58,6 +63,7 @@ const Login = ({ login, history }) => {
                      name="email"
                      required
                      onChange={ e => onInputValueChange(e)}
+                     autoComplete="new-password"
                 />
             </FormGroup>
             <FormGroup className="form-group-margin">
@@ -69,11 +75,13 @@ const Login = ({ login, history }) => {
                      name="password"
                      required
                      onChange={ e => onInputValueChange(e)}
+                     autoComplete="new-password"
                 />
             </FormGroup> 
             <FormGroup className="centered">
               <Button type="submit" color="warning" size="lg"> Login </Button>
           </FormGroup>
+          <p className="text-center text-dark login-details">Don't Have An Account? <Link className="site-theme" to="/">Sign Up</Link></p>
             </Form>
         </CardBody>
         </Card>
