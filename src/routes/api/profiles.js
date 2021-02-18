@@ -11,6 +11,7 @@ import cloudinary from "cloudinary"
 import getDistanceFromLatLongInKm from "../../helpers/getDistanceFromLatLongInKm"
 import determineMatchingStrength from "../../helpers/determineMatchingStrength"
 import sortProfilesByLocation from "../../helpers/sortProfilesByLocation"
+import { async } from "regenerator-runtime"
 
 const router = express.Router()
 
@@ -196,6 +197,35 @@ router.get('/matches', auth, async (req, res) => {
     } catch (error) {
         console.error(error)
         res.status(500).send("Server Error")
+    }
+})
+
+router.get('/matches/count', auth, async (req, res) => {
+    try {
+        let profileToBeMatched = await Profile.findOne({ user: req.user.id })
+        
+        if(!profileToBeMatched){
+            return res.status(400).json({
+                errors: [{
+                    msg: "Profile not found"
+                }]
+            })
+        }
+
+        let interestToMatch = profileToBeMatched.interests.map((interest) => interest.interestName)
+        let matchesCount = await Profile.find({
+            'interests.interestName' : { $in: interestToMatch },
+            user: { $ne: req.user.id} // get all the matched profiles except profile of the 
+            // currently logged in user
+        })
+
+        res.json({
+            matchCount: matchesCount.length
+        })
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).send("server Error")
     }
 })
 

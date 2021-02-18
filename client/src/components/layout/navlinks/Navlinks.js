@@ -13,7 +13,7 @@ import {
 import { logout } from "../../../actions/auth"
 import profileTestImage from "../../../images/profile-test-image.jpg"
 
-const Navlinks = ({ logout }) => {
+const Navlinks = ({ logout, matches }) => {
 
 const handleLogOut = (e) => {
     e.preventDefault()
@@ -72,7 +72,7 @@ const handleLogOut = (e) => {
                       <Link to="/dashboard/match">
                       <i className="fa fa-heart" />
                        <span className="ml-4">Matches</span>
-                       <span className="ml-4 dropdown-item-badge-default">50</span>
+                       <span className="ml-4 dropdown-item-badge-default">{ matches.matchCount }</span>
                       </Link>
                     </div>
                   </DropdownItem>
@@ -155,8 +155,12 @@ const handleLogOut = (e) => {
 )
 }
 
+const mapStateToProps = (state) => ({
+  matches: state.matches
+})
+
 const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logout())
 })
 
-export default connect(null, mapDispatchToProps)(Navlinks)
+export default connect(mapStateToProps, mapDispatchToProps)(Navlinks)

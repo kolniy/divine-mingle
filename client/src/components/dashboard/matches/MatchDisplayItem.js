@@ -1,4 +1,5 @@
 import React from "react"
+import StarRatings from "react-star-ratings"
 import { 
     Col,
     Card,
@@ -8,7 +9,7 @@ import {
     CardText
  } from "reactstrap"
 
-const MatchDisplayItem = ({ cardImage, profileName }) => {
+const MatchDisplayItem = ({ cardImage, profileName, distanceApart, strengthCount }) => {
     return <>
     <Col className="mb-4" sm="3" xs="6">
         <div className="match-display-item">
@@ -24,9 +25,23 @@ const MatchDisplayItem = ({ cardImage, profileName }) => {
         <CardBody>
           <CardTitle>{profileName}</CardTitle>
           <CardText>
-            <i className="fa fa-map-marker mr-1"></i> 39km away from here
+            <i className="fa fa-map-marker mr-1"></i> {distanceApart}{" "}{" "}km away from here
           </CardText>
         </CardBody>
+        <div className="matching-strength">
+          <span className="strength-test">
+            matching strength
+          </span>
+        <StarRatings
+				 isSelectable={false}
+         rating={strengthCount}
+         starDimension='15px'
+         starRatedColor="orangered"
+         numberOfStars={5}
+         starSpacing='1px'
+         name='rating'
+        />
+        </div>
       </Card>
       </div>
     </Col>

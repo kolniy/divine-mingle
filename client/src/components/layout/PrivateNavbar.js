@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 import {
     UncontrolledCollapse,
@@ -11,8 +12,14 @@ import {
   import Logo from "../../images/DivineminglelogoSVG.svg"
   import NavlinkSearch from "./navlinks/NavlinkSearchInput"
   import Navlinks from "./navlinks/Navlinks"
+import { getMatchCount } from "../../actions/matches"
 
-const Navigationbar = ({ auth }) => {
+const Navigationbar = ({ getMatchesCount }) => {
+
+    useEffect(() => {
+      getMatchesCount()
+    }, [getMatchesCount])
+
   return <>
     <Navbar
           className="navbar-horizontal navbar-dark bg-warning private-navbar"
@@ -67,4 +74,8 @@ const Navigationbar = ({ auth }) => {
   </>
 }
 
-export default Navigationbar
+const mapDispatchToProps = (dispatch) => ({
+  getMatchesCount : () => dispatch(getMatchCount())
+})
+
+export default connect(null, mapDispatchToProps)(Navigationbar)

@@ -31,4 +31,16 @@
     .card:hover {
         transform: translateY(-6px);
     }
+
+    .card .matching-strength{
+        padding-bottom: 7px;
+        padding-left: 8px;
+
+        .strength-test {
+            color: var(--site-dark-color);
+            font-size: 10px;
+            text-transform: uppercase;
+            margin-right: 3px;
+        }
+    }
 }

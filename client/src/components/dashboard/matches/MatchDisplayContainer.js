@@ -1,23 +1,25 @@
 import React from "react"
 import MatctDisplayItem from "./MatchDisplayItem"
 import { Row } from "reactstrap"
-import edsheranImage from "../../../images/edsheran-card-display.jpg"
-import elonMuskImage from "../../../images/elon-musk-card-display.jpg"
-import elvisPresleyImage from "../../../images/elvis-card-display.jpg"
-import mjCardImage from "../../../images/mj-card-display.jpg"
-import jonBellion from "../../../images/jon-bellion-card-display.jpeg"
 
-
-const MatchsDisplayContainer = () => {
+const MatchsDisplayContainer = ({ matches }) => {
     return <>
     <div className="match-display-container">
         <Row>
-            <MatctDisplayItem cardImage={jonBellion} profileName="Jon Bellion" />
-            <MatctDisplayItem cardImage={elvisPresleyImage} profileName="Elvis Presley" />
-            <MatctDisplayItem cardImage={mjCardImage} profileName="micheal jackson" />
-            <MatctDisplayItem cardImage={elonMuskImage} profileName="Elon Musk"  />
-            <MatctDisplayItem cardImage={edsheranImage} profileName="ed sheran" />
-            <MatctDisplayItem cardImage={elonMuskImage} profileName="Elon Musk" />
+            {
+                matches.length === 0 ? 
+                <p className="text-center lead">No Matches Found</p> : 
+                <>
+                    {
+                        matches.map((match) => <MatctDisplayItem key={match._id}
+                        cardImage={match.profilepic}
+                         profileName={`${match.firstname} ${match.lastname}`}
+                         distanceApart={match.distance}
+                         strengthCount={match.matchingCount}
+                          />)
+                    }
+                </>
+            }
         </Row>
     </div>
     </>
