@@ -2,7 +2,7 @@
   "name": "divine-mingle",
   "version": "1.0.0",
   "description": "a dating site for religious people",
-  "main": "index.js",
+  "main": "server.js",
   "engines": {
     "node": "14.15.4"
   },
