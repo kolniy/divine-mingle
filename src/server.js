@@ -1,4 +1,5 @@
 import express from "express"
+import path from "path"
 import cloudinary from "cloudinary"
 
 import connectDB from "./config/connection"
