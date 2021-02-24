@@ -1,15 +1,15 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
-import { getProfile } from "../../../actions/profile"
 import BasicProfileInfo from "./BasicProfileInfo"
 import ProfileTabs from "./ProfileTabs"
 import PrivateNavbar from "../../layout/PrivateNavbar"
+import { getUserProfileById } from "../../../actions/profile"
 
-const Dashboard = ({ getUserProfile }) => {
+const Dashboard = ({ match, getProfileById }) => {
 
     useEffect(() => {
-        getUserProfile()
-    }, [getUserProfile])
+        getProfileById(match.params.profileId)
+    }, [getProfileById, match.params.profileId])
 
     return <>
     <section className="dashboard-container">
@@ -22,7 +22,7 @@ const Dashboard = ({ getUserProfile }) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    getUserProfile : () => dispatch(getProfile())
+    getProfileById : (id) => dispatch(getUserProfileById(id))
 })
 
 export default connect(null, mapDispatchToProps)(Dashboard)

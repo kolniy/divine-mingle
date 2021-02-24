@@ -17,6 +17,7 @@ import MatchDisplay from "./components/dashboard/matches/MatchDisplay"
 import FavouriteDisplay from "./components/dashboard/favourites/FavouriteDisplay"
 import ForumsDisplay from "./components/dashboard/forum/Forums-display"
 import ForumArticleDisplay from "./components/dashboard/forum-article/ForumArticleDisplay"
+import OtherUsersProfile from "./components/dashboard/OthersProfile/ProfileDisplay"
 import PrivateRoute from "./components/routing/PrivateRoute"
 import PubliceRoute from "./components/routing/PublicRoute"
 import Alert from "./components/layout/Alert"
@@ -53,6 +54,7 @@ function App() {
         <PrivateRoute path="/dashboard/favourite" exact component={FavouriteDisplay} />
         <PrivateRoute path="/dashboard/forum" exact component={ForumsDisplay} />
         <PrivateRoute path="/dashboard/forum/article/articleId" exact component={ForumArticleDisplay} />
+        <PrivateRoute path="/dashboard/profile/user/:profileId" exact component={OtherUsersProfile} />
       </Switch>
     </Router>
     </Provider>

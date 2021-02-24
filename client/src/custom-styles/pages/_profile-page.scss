@@ -20,13 +20,17 @@
   }
   
   .profile-page .form-group {
-    margin-bottom: 8px;
+    margin-bottom: .9rem;
   }
   
   .profile-page .form-warning {
     color: var(--site-secondary-orange-color);
     font-size: 13px;
     margin-top: 2px;
+  }
+
+  .profile-page .btn-warning {
+    box-shadow: none !important;
   }
   
   .profile-page .input-Style {

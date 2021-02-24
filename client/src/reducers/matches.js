@@ -1,4 +1,4 @@
-import { GET_MATCH_COUNT, GET_MATCH, MATCH_ERROR } from "../actions/types"
+import { GET_MATCH_COUNT, GET_MATCH, CLEAR_MATCH, MATCH_ERROR } from "../actions/types"
 
 const initialState = {
     userMatches:[],
@@ -25,10 +25,13 @@ const matchReducer = (state = initialState, action) => {
                     loading:false
                 }   
             case MATCH_ERROR:
+            case CLEAR_MATCH:    
                 return {
                     ...state,
                     loading: false,
-                    error: payload
+                    error: payload,
+                    userMatches:[],
+                    matchCount:0,
                 }     
             default:
                 return state

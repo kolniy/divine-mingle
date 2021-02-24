@@ -229,6 +229,26 @@ router.get('/matches/count', auth, async (req, res) => {
     }
 })
 
+// route to get just one profile by ID
+router.get("/:profileId", auth, async (req, res) => {
+    try {
+        const profile = await Profile.findOne({
+            _id: req.params.profileId
+        })
+
+        if(!profile){
+            return res.status(404).json({
+                errors: [{msg: "Profile Not Found"}]
+            })
+        }
+
+        res.json(profile)
+
+    } catch (error) {
+        res.status(500).send("Server Error")
+    }
+})
+
 // private route
 // route to delete user profile and account
 router.delete('/', auth, async (req, res) => {

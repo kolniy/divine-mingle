@@ -5,7 +5,8 @@ import { REGISTER_SUCCESS, REGISTER_FAIL,
      LOGIN_FAIL,
      AUTH_ERROR,
      LOGOUT,
-     CLEAR_PROFILE
+     CLEAR_PROFILE,
+     CLEAR_MATCH
     } from "./types";
 import setAuthToken from "../utilities/setAuthToken"
 
@@ -103,6 +104,9 @@ export const logout = () => {
         })
         dispatch({
             type: CLEAR_PROFILE
+        })
+        dispatch({
+            type: CLEAR_MATCH
         })
     }
 }

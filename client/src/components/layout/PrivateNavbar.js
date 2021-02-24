@@ -74,6 +74,7 @@ const Navigationbar = ({ getMatchesCount }) => {
   </>
 }
 
+
 const mapDispatchToProps = (dispatch) => ({
   getMatchesCount : () => dispatch(getMatchCount())
 })

@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import StarRatings from "react-star-ratings"
 import { 
     Col,
@@ -9,7 +10,7 @@ import {
     CardText
  } from "reactstrap"
 
-const MatchDisplayItem = ({ cardImage, profileName, distanceApart, strengthCount }) => {
+const MatchDisplayItem = ({ cardImage, profileName, distanceApart, strengthCount, userId }) => {
     return <>
     <Col className="mb-4" sm="3" xs="6">
         <div className="match-display-item">
@@ -23,7 +24,9 @@ const MatchDisplayItem = ({ cardImage, profileName, distanceApart, strengthCount
         ></CardImg>
         </div>
         <CardBody>
-          <CardTitle>{profileName}</CardTitle>
+          <CardTitle>
+            <Link to={`/dashboard/profile/user/${userId}`}>{profileName}</Link>
+          </CardTitle>
           <CardText>
             <i className="fa fa-map-marker mr-1"></i> {distanceApart}{" "}{" "}km away from here
           </CardText>

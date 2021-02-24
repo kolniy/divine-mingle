@@ -1,7 +1,12 @@
 import axios from "axios"
 import setAuthToken from "../utilities/setAuthToken"
-import { GET_PROFILE, UPDATE_PROFILE, PROFILE_ERROR} from "./types"
-import { setAlert } from "./alert"
+import { GET_PROFILE,
+     UPDATE_PROFILE, 
+     PROFILE_ERROR,
+     GET_OTHER_USERS_PROFILE,
+     OTHER_USERS_PROFILE_ERROR
+    } from "./types"
+// import { setAlert } from "./alert"
 
 export const getProfile = () => {
     return async (dispatch) => {
@@ -24,7 +29,7 @@ export const getProfile = () => {
 
             if(errors){
                 errors.forEach(error => {
-                    dispatch(setAlert(error.msg, "danger"))
+                   alert(error.msg)
                 });
             }
             dispatch({
@@ -36,7 +41,9 @@ export const getProfile = () => {
 
 export const updateOrCreateUserProfile = (profileData, history, routeTo) => {
     return async (dispatch) => {
-        setAuthToken(localStorage.getItem("token"))
+        if(localStorage.getItem("token")){
+            setAuthToken(localStorage.getItem("token"))
+        }
         const config = {
             headers: {
                 "Content-Type": "application/json"
@@ -55,7 +62,7 @@ export const updateOrCreateUserProfile = (profileData, history, routeTo) => {
 
             if(errors){
                 errors.forEach(error => {
-                    dispatch(setAlert(error.msg, "danger"))
+                   alert(error.msg)
                 });
             }
             dispatch({
@@ -88,11 +95,36 @@ export const uploadProfileImage = (imageFormData, history, routeTo) => {
 
             if(errors){
                 errors.forEach(error => {
-                    dispatch(setAlert(error.msg, "danger"))
+                    alert(error.msg)
                 });
             }
             dispatch({
                 type: PROFILE_ERROR
+            })
+        }
+    }
+}
+
+export const getUserProfileById = (id) => {
+    return async (dispatch) => {
+        if(localStorage.getItem("token")){
+            setAuthToken(localStorage.getItem("token"))
+        }
+        try {
+            const res = await axios.get(`/api/v1/profile/${id}`)
+            dispatch({
+                type: GET_OTHER_USERS_PROFILE,
+                payload: res.data
+            })
+        } catch (error) {
+            const errors = error.response.data.errors
+
+            errors.forEach((error) => {
+                alert(error.msg)
+            })
+
+            dispatch({
+                type: OTHER_USERS_PROFILE_ERROR
             })
         }
     }

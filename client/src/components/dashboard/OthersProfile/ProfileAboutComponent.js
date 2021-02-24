@@ -3,15 +3,15 @@ import { connect } from "react-redux"
 import { Row, Col } from "reactstrap"
 import Spinner from "../../layout/Spinner"
 
-const ProfileAboutComponent = ({
+const ProfileAboutComponent = ({ 
     profile: {
-        userprofile,
-        profileLoading
+        otherUserProfile,
+        otherUserProfileLoading
     }
 }) => {
     return <>
-        {
-            !profileLoading && userprofile !== null ? <>
+    {
+     !otherUserProfileLoading && otherUserProfile !== null ? <>
         <div className="about-profile">
          <Row>
             <Col md="7">
@@ -30,7 +30,7 @@ const ProfileAboutComponent = ({
                     <h4 className="sub-heading">Denomination</h4>
                     <p className="paragraph">
                         {
-                            userprofile.denomination
+                          otherUserProfile.denomination
                         }
                     </p>
                 </div>
@@ -50,7 +50,7 @@ const ProfileAboutComponent = ({
             <Col md="3 ml-4">
                 <div className="about-section">
                     <h4 className="sub-heading bordered">My Details</h4>
-                    <h4 className="sub-heading bordered">Ethnicity <span className="profile-spec ml-2">{userprofile.ethnicity}</span></h4>
+                    <h4 className="sub-heading bordered">Ethnicity <span className="profile-spec ml-2">{otherUserProfile.ethnicity}</span></h4>
                     <h4 className="sub-heading bordered">Eye Color <span className="profile-spec ml-2">Blue</span></h4>
                     <h4 className="sub-heading bordered">Height   <span className="profile-spec ml-2">102CM</span></h4>
                     <h4 className="sub-heading bordered">Body Type <span className="profile-spec ml-2">Slender</span></h4>
@@ -58,9 +58,9 @@ const ProfileAboutComponent = ({
             </Col>
         </Row>
         </div>
-            </> : <Spinner />
-        }
-        
+        </> : <Spinner />
+    }
+     
     </>
 }
 

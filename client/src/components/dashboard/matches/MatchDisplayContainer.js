@@ -16,6 +16,7 @@ const MatchsDisplayContainer = ({ matches }) => {
                          profileName={`${match.firstname} ${match.lastname}`}
                          distanceApart={match.distance}
                          strengthCount={match.matchingCount}
+                         userId = {match._id}
                           />)
                     }
                 </>

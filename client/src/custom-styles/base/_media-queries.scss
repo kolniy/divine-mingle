@@ -12,6 +12,22 @@
         }
       }
     }
+
+ @media (max-width : 767px){
+  .profile-page .profile-page-image-container {
+    display: none;
+  }
+ }
+
+ @media (min-width : 1620px){
+  .profile-page .card {
+    margin-top: 10rem;
+  }
+
+.profile-page .profile-page-image-container img {
+    min-width: 900px;
+ }
+}
     
 @media (max-width : 992px){
   .profile-page .profile-page-image-container img {

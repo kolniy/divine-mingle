@@ -11,9 +11,11 @@ import {
     DropdownToggle
 } from "reactstrap"
 import { logout } from "../../../actions/auth"
-import profileTestImage from "../../../images/profile-test-image.jpg"
 
-const Navlinks = ({ logout, matches }) => {
+const Navlinks = ({ logout, matches, profile:{
+  userprofile,
+  profileLoading
+} }) => {
 
 const handleLogOut = (e) => {
     e.preventDefault()
@@ -91,9 +93,15 @@ const handleLogOut = (e) => {
         <Nav className="align-items-lg-center ml-lg-auto" navbar>
         <UncontrolledDropdown nav inNavbar>
                     <DropdownToggle nav>
-                      <img className="avatar rounded-circle" src={profileTestImage} alt="navbar profile display" />
+                      <img className="avatar rounded-circle"
+                       src={ 
+                         userprofile !== null && !profileLoading && userprofile.profilepic
+                       }
+                       alt="navbar profile display" />
                       <span className="nav-link-inner--text d-lg-none">
-                        Mary Amaka
+                        {
+                          userprofile !== null && !profileLoading ? `${userprofile.firstname} ${userprofile.lastname}` : ""
+                        }
                       </span>
                     </DropdownToggle>
                     <DropdownMenu
@@ -102,7 +110,16 @@ const handleLogOut = (e) => {
                     >
                       <DropdownItem className="text-center">
                       <div className="dropdown-item-container">
-                       <p><img className="avatar rounded-circle mr-2" src={profileTestImage} alt="navbar profile display" /> {" "} Mary Amaka</p>
+                       <p><img className="avatar rounded-circle mr-2"
+                        src={ 
+                          userprofile !== null && !profileLoading && userprofile.profilepic
+                        }
+                        alt="navbar profile display" /> 
+                        {" "} 
+                        {
+                          userprofile !== null && !profileLoading ? `${userprofile.firstname} ${userprofile.lastname}` : ""
+                        }
+                        </p>
                       <DropdownItem divider />
                       </div>
                       </DropdownItem>
@@ -156,7 +173,8 @@ const handleLogOut = (e) => {
 }
 
 const mapStateToProps = (state) => ({
-  matches: state.matches
+  matches: state.matches,
+  profile: state.profile
 })
 
 const mapDispatchToProps = (dispatch) => ({

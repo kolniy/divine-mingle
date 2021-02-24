@@ -17,7 +17,7 @@ import { Container,
 import ReactDatetime from "react-datetime"
 import Moment from "moment"
 import profilepageoneimage from "../../images/regfirstStepPic.jpg"
-import { updateOrCreateUserProfile, getProfile } from "../../actions/profile"
+import { updateOrCreateUserProfile } from "../../actions/profile"
 import Navbar from "../../components/layout/Navbar"
 import axios from "axios"
 
@@ -55,14 +55,21 @@ const Profilepageone = ({ updateOrCreateProfile, history, profile }) => {
    }, [profile])
 
    useEffect(() => { // get user location when components loads
-    if(!navigator.geolocation){
-      return alert('Geolocation is not supported by your browser.')
-    }
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords
-      setUserLocation({latitude, longitude})
+    // when page loads, get user location information
+    fetch('https://extreme-ip-lookup.com/json/')
+      .then( res => res.json())
+      .then(response => {
+        const { lat, lon } = response
+        setUserLocation(
+          {latitude: lat,
+           longitude: lon
+          })
       })
-   }, [])
+      .catch((data, status) => {
+    console.log('Request failed');
+ })
+}, [])
+
 
    // block of code to ensure datetimepicker does not 
    // future dates.
@@ -110,10 +117,12 @@ const Profilepageone = ({ updateOrCreateProfile, history, profile }) => {
 
    const getUserProfileNameByInputs = async (searchQuery) => {
     try {
-      if(searchQuery.length > 0){  // if condition to prevent the query from running 
+      if(searchQuery.length !== 0){  // if condition to prevent the query from running 
         // when the components just mounts and input is still empty
         const res = await axios.get(`/api/v1/profile/username?username=${searchQuery}`)
         updateExisitUsernamesFromBD(res.data)
+      } else {
+        return
       }
     } catch (error) {
       console.log(error)
@@ -121,7 +130,11 @@ const Profilepageone = ({ updateOrCreateProfile, history, profile }) => {
    }
 
    useEffect(() => {
-    getUserProfileNameByInputs(profileData.username)
+     if(profileData.username.length !== 0){
+      getUserProfileNameByInputs(profileData.username)
+     } else {
+       return
+     }
    }, [profileData.username])
 
    const { firstname, lastname, username } = profileData
@@ -204,10 +217,12 @@ return <>
                 readOnly:true
               }}
               timeFormat={false}
-              onChange={(e) => upDateProfileData({
-                ...profileData,
-                dateofbirth: Moment(e.toDate()).format("DD-MM-YYYY")
-              })}
+              onChange={(e) => {
+                upDateProfileData({
+                  ...profileData,
+                  dateofbirth: Moment(e.toDate()).format("MM-DD-YYYY")
+                })
+              }}
               closeOnSelect={true}
               isValidDate={valid}
             />
@@ -233,7 +248,7 @@ return <>
                 }
             </FormGroup>
 
-          <FormGroup className="centered">
+          <FormGroup className="centered btn-custom-style">
               <Button disabled={ 
                   !validFistname ||  // disable button on empty firstname
                   !validLastName ||  // disable button on empty lastname
@@ -270,8 +285,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  updateOrCreateProfile : (profileFormData, history, routeTo) => dispatch(updateOrCreateUserProfile(profileFormData, history, routeTo)),
-  getUserProfile: () => dispatch(getProfile())
+  updateOrCreateProfile : (profileFormData, history, routeTo) => dispatch(updateOrCreateUserProfile(profileFormData, history, routeTo))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Profilepageone))

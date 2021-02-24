@@ -1,7 +1,7 @@
 
 const sortProfilesByLocation = (profilesData) => {
     return profilesData.sort((a, b) => {
-        return b.location - a.location 
+        return  a.distance - b.distance
     })
 }
    
