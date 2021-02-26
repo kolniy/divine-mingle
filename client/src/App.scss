@@ -22,7 +22,11 @@
 @import "./custom-styles/components/comment-container";
 @import "./custom-styles/components/comment-item";
 @import "./custom-styles/components/related-forum-article-item";
+@import "./custom-styles/components/chat-window-sidebar";
+@import "./custom-styles/components/chat-window-messages";
+@import "./custom-styles/components/sidebar-chat-item";
 @import "./custom-styles/components/spinner";
+
 
 @import "./custom-styles/pages/register";
 @import "./custom-styles/pages/profile-page";
@@ -33,3 +37,4 @@
 @import "./custom-styles/pages/favourite-display";
 @import "./custom-styles/pages/forums-display";
 @import "./custom-styles/pages/forum-article-display";
+@import "./custom-styles/pages/messages-section";

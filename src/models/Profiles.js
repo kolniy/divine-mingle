@@ -40,6 +40,37 @@ const profileSchema = ({
     dateofbirth: {
         type: String
     },
+    about: {
+        type: String
+    },
+    maritalstatus: {
+        type: String
+    },
+    eyecolor: {
+        type: String
+    },
+    height: {
+        type: String
+    },
+    bodytype: {
+        type: String
+    },
+    photos: [{
+        url: {
+            type: String
+        }
+    }],
+    questions: [{
+        question: {
+            type: String
+        },
+        answer: {
+            type: String
+        },
+        answered: {
+            type: Boolean
+        }
+    }],
     profilecompleted: {
         type: Boolean,
         default: false

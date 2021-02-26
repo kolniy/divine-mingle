@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { Switch, BrowserRouter as Router } from "react-router-dom"
+import { Switch, BrowserRouter as Router, Route } from "react-router-dom"
 
 import "./styles/assets/vendor/nucleo/css/nucleo.css"
 import "./styles/assets/vendor/font-awesome/css/font-awesome.min.css"
@@ -20,6 +20,7 @@ import ForumArticleDisplay from "./components/dashboard/forum-article/ForumArtic
 import OtherUsersProfile from "./components/dashboard/OthersProfile/ProfileDisplay"
 import PrivateRoute from "./components/routing/PrivateRoute"
 import PubliceRoute from "./components/routing/PublicRoute"
+import ChatPage from "./components/dashboard/messages/ChatPage"
 import Alert from "./components/layout/Alert"
 
 // REDUX STORE CONFIG
@@ -55,6 +56,7 @@ function App() {
         <PrivateRoute path="/dashboard/forum" exact component={ForumsDisplay} />
         <PrivateRoute path="/dashboard/forum/article/articleId" exact component={ForumArticleDisplay} />
         <PrivateRoute path="/dashboard/profile/user/:profileId" exact component={OtherUsersProfile} />
+        <Route path="/dashboard/messages" exact component={ChatPage} />
       </Switch>
     </Router>
     </Provider>

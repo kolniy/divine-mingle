@@ -1,0 +1,15 @@
+.messages-section {
+    .chat-window-container{
+        display: grid;
+        place-items: center;
+        // height: 100vh;
+        height: 85vh;
+    }
+
+    .chat-window {
+        display: flex;
+        height: 85vh; 
+        width: 80vw;
+        // margin-top: -20px;
+    }
+}

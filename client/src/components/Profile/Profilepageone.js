@@ -253,7 +253,7 @@ return <>
                   !validFistname ||  // disable button on empty firstname
                   !validLastName ||  // disable button on empty lastname
                   !validUsername ||  // disable button on empty username
-                  existingUsernamesFromBD.length > 0  // disable button when inputed already username exists
+                  existingUsernamesFromBD.length > 0  // disable button when inputed username already exists
                    } block className="btn-icon"
                     type="submit" color="warning" 
                     size="lg">NEXT</Button>
