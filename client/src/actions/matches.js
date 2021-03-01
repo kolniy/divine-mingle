@@ -15,14 +15,16 @@ export const getMatchCount = () => {
                 payload: res.data
             })
         } catch (error) {
-            // const errors = error.response.data.errors
-            // errors.forEach(error => {
-            //     alert(error.msg)
-            // });
-            // dispatch({
-            //     type: MATCH_ERROR,
-            //     payload: errors
-            // })
+            const errors = error.response.data.errors
+            if(errors){
+                errors.forEach(error => {
+                    alert(error.msg)
+                });
+                dispatch({
+                    type: MATCH_ERROR,
+                    payload: errors
+                })
+            }
         }
     }
 }
@@ -40,13 +42,15 @@ export const getMatches = () => {
             })
         } catch (error) {
             const errors = error.response.data.errors
-            errors.forEach(error => {
-                alert(error.msg)
-            });
-            dispatch({
-                type: MATCH_ERROR,
-                payload: errors
-            })
+            if(errors){
+                errors.forEach(error => {
+                    alert(error.msg)
+                });
+                dispatch({
+                    type: MATCH_ERROR,
+                    payload: errors
+                })
+            }
         }
     }
 }

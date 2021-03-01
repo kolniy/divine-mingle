@@ -43,8 +43,65 @@
 
     &__body {
         background-color: #c4c4c4;
+        // background-image: url(../../images/chat-background.jpg);
+        // background-repeat: repeat;
+        // background-position: center;
+        // background-size: cover;
         flex: 1;
         padding: 30px;
         overflow-y: auto;
+    }
+
+    .chat__message {
+        position: relative;
+        width: fit-content;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 16px;
+        background-color: #F5FFD8;
+        color: var(--site-dark-color);
+        font-weight: 500;
+    }
+
+    .chat__timestamp{
+        margin-left: 10px;
+        font-size: xx-small;
+    }
+
+    .chat__reciever{
+        margin-left: auto;
+        background-color: var(--site-grey-color);
+    }
+
+    .messages__footer{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 62px;
+        background-color: #fff;
+
+        & > form {
+            flex: 1;
+            display: flex;
+        }
+
+        & > form > input {
+            flex: 1;
+            border-radius: 30px;
+            padding: 10px;
+            border: none;
+            background-color: var(--site-grey-color);
+        }
+
+        & > form > button {
+            display: none;
+        }
+
+        i {
+            padding: 10px;
+            color: #ADB5BD;
+            font-size: 20px;
+        }
+
     }
 }

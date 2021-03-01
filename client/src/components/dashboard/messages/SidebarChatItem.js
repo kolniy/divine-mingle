@@ -1,17 +1,21 @@
 import React from 'react'
+// import { Link } from "react-router-dom"
 import sampleImage from "../../../images/profile-test-image.jpg"
+import db from "../../../firebase"
 
-const SidebarChatItem = ({ addNewChat }) => {
+const SidebarChatItem = ({ addNewChat, id, name, updateRoom }) => {
 
     const createChat = () => {
-        const roomName = prompt("Please enter name for chat")
+        const roomName = prompt("Please enter name for the chat room")
         if(roomName){
-            
+            db.collection("rooms").add({
+                name: roomName
+            })
         }
     }
 
     return !addNewChat ? (
-        <div className="sidebar__chat-item">
+        <div onClick={e => updateRoom(id)} className="sidebar__chat-item">
              <div className="chat-item-img-container">
                 <img className="img-fluid rounded-circle"
                     src={sampleImage}
@@ -21,7 +25,7 @@ const SidebarChatItem = ({ addNewChat }) => {
              <div className="chat-item-details">
                         <div className="chat-item-details-info">
                             <div className="name">
-                                Jim Iyke
+                                {name}
                             </div>
                             <div className="time">
                                 9:31PM
