@@ -55,6 +55,9 @@ const profileSchema = ({
     bodytype: {
         type: String
     },
+    isActive: {
+        type: Boolean
+    },
     photos: [{
         url: {
             type: String

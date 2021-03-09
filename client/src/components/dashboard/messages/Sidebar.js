@@ -1,24 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import SidebarChatItem from "./SidebarChatItem"
-import db from "../../../firebase"
 
-const Sidebar = ({ updateRoomId }) => {
-
-    const [ rooms, setRooms ] = useState([])
-    
-    useEffect(() => {
-       const unsubscribe =  db.collection('rooms').onSnapshot(snapshot => {
-        setRooms(snapshot.docs.map(doc => ({
-            id: doc.id,
-            data: doc.data()
-        })
-        ))
-    })
-
-        return () => {
-            unsubscribe()
-        }
-    }, [])
+const Sidebar = ({ chatRooms, updateActiveChatRoomDetails }) => {
 
     return <>
         <div className="sidebar">
@@ -27,14 +10,12 @@ const Sidebar = ({ updateRoomId }) => {
             </div>
             <div className="sidebar__chats">
             <div className="sidebar__chats-itemsContainer">
-                <SidebarChatItem addNewChat />
                 {
-                    rooms.map((room) => (
+                    chatRooms.map((room) => (
                         <SidebarChatItem
-                            key={room.id}
-                            id={room.id}
-                            name={room.data.name}
-                            updateRoom={updateRoomId}
+                            key={room._id}
+                            roomData={room}
+                            updateActiveRoom={updateActiveChatRoomDetails}
                         />
                     ))
                 }

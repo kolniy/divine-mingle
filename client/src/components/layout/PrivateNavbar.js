@@ -13,12 +13,14 @@ import {
   import NavlinkSearch from "./navlinks/NavlinkSearchInput"
   import Navlinks from "./navlinks/Navlinks"
 import { getMatchCount } from "../../actions/matches"
+import { getProfile } from "../../actions/profile"
 
-const Navigationbar = ({ getMatchesCount }) => {
+const Navigationbar = ({ getMatchesCount, getUserProfile }) => {
 
     useEffect(() => {
-      getMatchesCount()
-    }, [getMatchesCount])
+      getUserProfile() // load profile
+      getMatchesCount() // load matches count
+    }, [getMatchesCount, getUserProfile])
 
   return <>
     <Navbar
@@ -76,7 +78,8 @@ const Navigationbar = ({ getMatchesCount }) => {
 
 
 const mapDispatchToProps = (dispatch) => ({
-  getMatchesCount : () => dispatch(getMatchCount())
+  getMatchesCount : () => dispatch(getMatchCount()),
+  getUserProfile : () => dispatch(getProfile())
 })
 
 export default connect(null, mapDispatchToProps)(Navigationbar)

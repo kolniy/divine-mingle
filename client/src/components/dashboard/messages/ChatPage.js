@@ -1,39 +1,53 @@
-import React, { useState } from "react"
-// import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import React, { useState, useEffect } from "react"
 import PrivateNavbar from "../../layout/PrivateNavbar"
 import Sidebar from "./Sidebar"
 import Messages from "./Messages"
+import { connect } from "react-redux"
+import { socket } from "../../../service/socket"
 
-const ChatWindow = () => {
+const ChatWindow = ({ user }) => {
+   
+    const [ chatRoomDetails, setChatRoomDetails ] = useState(null)
+    const [ chatRooms, setChatRooms ] = useState([])
 
-    const [ chatRoomId, setChatRoomId ] = useState(null)
+    useEffect(() => {
 
-    const updateChatRoomId = (value) => {
-        setChatRoomId(value)
+        socket.on('chatRoomResults', (data) => {
+            setChatRooms(data)
+        })
+
+        // here comes all the socket.on
+        // listener for this page
+    }, [])
+
+    useEffect(() => {
+        socket.emit('getUserRooms')
+    }, [])
+
+    const updateActiveChatRoomDetails = (data) => {
+        setChatRoomDetails(data)
     }
 
     return <>
         <section className="messages-section">
             <PrivateNavbar />
         <div className="chat-window-container">
-            <div className="chat-window shadow">
-               <Sidebar updateRoomId={updateChatRoomId} />
-               <Messages chatId={chatRoomId}/>
-                  {/* <Router>
-                  <Sidebar updateRoomId={updateChatRoomId} /> 
-                      <Switch>
-                        <Route to="/rooms/:roomId">
-                            <Messages chatId={chatRoomId}/>
-                        </Route>
-                        <Route to="/">
-                            <Messages  />
-                        </Route>
-                      </Switch>
-                  </Router> */}
+            <div className="chat-window">
+               {
+                   chatRooms.length > 0 ?
+                    <Sidebar chatRooms={chatRooms} updateActiveChatRoomDetails={updateActiveChatRoomDetails} /> : 
+                    <p style={{flex:0.4}} className="lead text-center">No Contacts Found</p>
+               }
+               <Messages chatRoomData={chatRoomDetails} />
             </div>
         </div>
         </section>
     </>
 }
 
-export default ChatWindow
+const mapStateToProps = (state) => ({
+    user: state.auth.user
+})
+
+
+export default connect(mapStateToProps)(ChatWindow)

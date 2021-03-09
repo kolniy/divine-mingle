@@ -50,11 +50,14 @@
 
             .counter{
                 font-size: 11px;
+                text-align: center;
                 background-color: var(--site-secondary-orange-color);
                 color: #ffffff;
                 padding: 4px;
                 border-radius: 50%;
                 font-weight: 600;
+                height: 22px;
+                width: 22px;
             }
         }
 

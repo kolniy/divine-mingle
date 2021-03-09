@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { Switch, BrowserRouter as Router, Route } from "react-router-dom"
+import { Switch, BrowserRouter as Router } from "react-router-dom"
 
 import "./styles/assets/vendor/nucleo/css/nucleo.css"
 import "./styles/assets/vendor/font-awesome/css/font-awesome.min.css"
@@ -56,7 +56,7 @@ function App() {
         <PrivateRoute path="/dashboard/forum" exact component={ForumsDisplay} />
         <PrivateRoute path="/dashboard/forum/article/articleId" exact component={ForumArticleDisplay} />
         <PrivateRoute path="/dashboard/profile/user/:profileId" exact component={OtherUsersProfile} />
-        <Route path="/dashboard/messages" exact component={ChatPage} />
+        <PrivateRoute path="/dashboard/messages" exact component={ChatPage} />
       </Switch>
     </Router>
     </Provider>
