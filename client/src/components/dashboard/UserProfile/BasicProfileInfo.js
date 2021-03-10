@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import {
     Container,
@@ -47,9 +48,9 @@ const BasicProfileInfo = ({ profile: {
                     <div className="profile-details-container">
                         <h1 className="profile-name">{`${userprofile.firstname} ${userprofile.lastname}`}</h1>
                         <p className="profile-age-and-location">{calculateAgeFromDOB(userprofile.dateofbirth)}
-                            <span className="profile-location">Chicago illinois, United States</span>
+                            <span className="profile-location">{userprofile.address ? userprofile.address : "Address not specified, Update Profile"}</span>
                         </p>
-                        <Button className="update-profile-button" color="warning">Update Info</Button>
+                        <Button tag={Link} to={`/dashboard/profile/update`} className="update-profile-button" color="warning">Update Info</Button>
                     </div>
                 </Col>
             </Row>

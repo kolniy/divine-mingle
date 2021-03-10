@@ -12,6 +12,7 @@ import Profilepageone from "./components/Profile/Profilepageone"
 import Profilepagetwo from "./components/Profile/Profilepagetwo"
 import Profilepagethree from "./components/Profile/Profilepagethree"
 import DashboardProfile from "./components/dashboard/UserProfile/Profiledisplay"
+import UpdateProfile from "./components/dashboard/UserprofileUpdate/UpdateProfile"
 import VisitorsDisplay from "./components/dashboard/visitors/VisitorsDisplay"
 import MatchDisplay from "./components/dashboard/matches/MatchDisplay"
 import FavouriteDisplay from "./components/dashboard/favourites/FavouriteDisplay"
@@ -50,6 +51,7 @@ function App() {
         <PrivateRoute path="/profilepagetwo" exact component={Profilepagetwo} />
         <PrivateRoute path="/profilepagethree" exact component={Profilepagethree} />
         <PrivateRoute path="/dashboard/profile" exact component={DashboardProfile} />
+        <PrivateRoute path="/dashboard/profile/update" exact component={UpdateProfile} />
         <PrivateRoute path="/dashboard/visitors" exact component={VisitorsDisplay} />
         <PrivateRoute path="/dashboard/match" exact component={MatchDisplay} />
         <PrivateRoute path="/dashboard/favourite" exact component={FavouriteDisplay} />
